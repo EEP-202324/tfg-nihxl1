@@ -8,6 +8,17 @@
             <div class="col-md-9">
                 <div class="card border-secondary mb-3">
                     <div class="row">
+                        <?php foreach ($pouches_data as $pouch): ?>
+                            <div class="col border-right border-danger">
+                                <div class="card-body text-secondary text-center">
+                                    <h5 class="card-title"><?php echo $pouch['type']; ?><i class="bi bi-droplet-half"></i></h5>
+                                    <p class="card-text"><?php echo $pouch['quantity']; ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- <div class="row">
                         <div class="col border-right border-danger">
                             <div class="card-body text-secondary text-center">
                                 <h5 class="card-title">A+<i class="bi bi-droplet-half"></i></h5>
@@ -32,7 +43,7 @@
                                 <p class="card-text">12</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-sm-4 mb-3">

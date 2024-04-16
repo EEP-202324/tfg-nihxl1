@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class BloodManagement extends CI_Controller
 {
     public function __construct()
@@ -12,37 +13,18 @@ class BloodManagement extends CI_Controller
         {
             redirect(base_url());
         }
+
+        $this->load->model('Admin/BloodManagementModel');
     }
 
-
-    
     public function index()
 	{
+		$data['pouches_data'] = $this->BloodManagementModel->get_pouches_data();
 		$this->load->view('STYLES/header');
         //$this->load->view('Admin/NavBar');
         $this->load->view('Admin/SidebarAdmin');
-		$this->load->view('Admin/Body/BloodManagement');
+		$this->load->view('Admin/Body/BloodManagement', $data); 
         $this->load->view('Admin/FooterAdmin');
 	}
-
-    public function Donations()
-	{
-		$this->load->view('STYLES/header');
-        //$this->load->view('Admin/NavBar');
-        $this->load->view('Admin/SidebarAdmin');
-		$this->load->view('Admin/Body/Donations');
-        $this->load->view('Admin/FooterAdmin');
-	}
-
-    public function Transfusions()
-	{
-		$this->load->view('STYLES/header');
-        //$this->load->view('Admin/NavBar');
-        $this->load->view('Admin/SidebarAdmin');
-		$this->load->view('Admin/Body/Transfusions');
-        $this->load->view('Admin/FooterAdmin');
-	}
-
-    
 }
 ?>
