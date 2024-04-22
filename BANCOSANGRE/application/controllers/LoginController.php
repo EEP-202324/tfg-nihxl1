@@ -23,11 +23,11 @@ class LoginController extends CI_Controller
 
         } else {
             $result = $this->LogInModel->log($email, $password);
-            //var_dump($result);
-            // $this->session->set_userdata('user', $email);
-            // $this->session->set_userdata('rol_id', $row['rol_id']);
+            var_dump($result);
+            $this->session->set_userdata('user', $email);
+            $this->session->set_userdata('role_id', $row['role_id']);
             if ($result) {
-                $rol = $this->session->userdata('rol_id');
+                $rol = $this->session->userdata('role_id');
 
                 //var_dump($rol);
                 if ($rol == '1') {

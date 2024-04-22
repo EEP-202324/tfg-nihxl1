@@ -11,9 +11,9 @@ class LogInModel extends CI_Model
 
     function log($email, $password)
     {   
-        $query = $this->db->select('u.id_usuario, u.email, u.password, u.rol_id, r.nombre as rol')
-            ->from('usuario u')
-            ->join('roles r', 'u.rol_id = r.id', 'left')
+        $query = $this->db->select('u.user_id, u.email, u.password, u.role_id, r.role_name as role')
+            ->from('user u')
+            ->join('roles r', 'u.role_id = r.role_id', 'right')
             ->where('email', $email)
             ->where('password', $password)
             ->get();
@@ -24,7 +24,7 @@ class LogInModel extends CI_Model
         
         if ($query->num_rows() > 0) {
             $this->session->set_userdata('user', $email);
-            $this->session->set_userdata('rol_id', $row['rol_id']);
+            $this->session->set_userdata('role_id', $row['role_id']);
             //var_dump($_SESSION);die();   
 
             return true;
