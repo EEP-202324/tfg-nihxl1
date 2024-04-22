@@ -29,7 +29,7 @@ class LoginController extends CI_Controller
             if ($result) {
                 $rol = $this->session->userdata('role_id');
 
-                //var_dump($rol);
+                var_dump($rol);
                 if ($rol == '1') {
                     redirect(base_url().'Admin/DashboardController');
                 } elseif ($rol == '2') {
