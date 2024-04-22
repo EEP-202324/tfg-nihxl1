@@ -7,10 +7,9 @@ class RegistroModel extends CI_Model
         $this->load->database();
     }
 
-
-    function register($datosForm)
+    function guardar_usuario($datosForm)
     {
-         $this->db->insert('usuario', $datosForm);
+         $this->db->insert('user', $datosForm);
 
         if ($this->db->affected_rows() > 0) {
             return true;
@@ -18,6 +17,7 @@ class RegistroModel extends CI_Model
             return false;
         }
     }
+
 }
 ?>
 

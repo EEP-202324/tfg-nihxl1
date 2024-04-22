@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class LoginController extends CI_Controller
 {
     public function __construct()
@@ -23,18 +24,15 @@ class LoginController extends CI_Controller
 
         } else {
             $result = $this->LogInModel->log($email, $password);
-            var_dump($result);
-            $this->session->set_userdata('user', $email);
-            $this->session->set_userdata('role_id', $row['role_id']);
             if ($result) {
-                $rol = $this->session->userdata('role_id');
-
-                var_dump($rol);
-                if ($rol == '1') {
+                $row = $this->LogInModel->getUserData($email);
+                $this->session->set_userdata('user', $email);
+                $this->session->set_userdata('role_id', $row['role_id']);
+                if ($row['role_id'] == '1') {
                     redirect(base_url().'Admin/DashboardController');
-                } elseif ($rol == '2') {
+                } elseif ($row['role_id'] == '2') {
                     redirect(base_url().'Donor/Dashboard');
-                } elseif ($rol == '3') {
+                } elseif ($row['role_id'] == '3') {
                     redirect(base_url().'Patient/Dashboard');
                 } else {
                     redirect('Welcome');
@@ -50,6 +48,5 @@ class LoginController extends CI_Controller
         $this->session->sess_destroy();
         redirect(base_url());
     }
-
 }
 ?>
