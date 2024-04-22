@@ -1,6 +1,6 @@
 
 <div class="container mt-4">
-    <h1 class="mb-4">ULTIMAS NOTICIAS</h1>
+    <h1 class="mb-4">ULTIMAS NOTICIAS nuevo</h1>
 
     <div class="row">
         <div class="col-md-8">
