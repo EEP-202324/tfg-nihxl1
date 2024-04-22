@@ -26,7 +26,6 @@ class LoginController extends CI_Controller
             //var_dump($result);
             // $this->session->set_userdata('user', $email);
             // $this->session->set_userdata('rol_id', $row['rol_id']);
-
             if ($result) {
                 $rol = $this->session->userdata('rol_id');
 
@@ -34,9 +33,9 @@ class LoginController extends CI_Controller
                 if ($rol == '1') {
                     redirect(base_url().'Admin/DashboardController');
                 } elseif ($rol == '2') {
-                    redirect(base_url().'Donante/DashboardController');
+                    redirect(base_url().'Donor/Dashboard');
                 } elseif ($rol == '3') {
-                    
+                    redirect(base_url().'Patient/Dashboard');
                 } else {
                     redirect('Welcome');
                 }

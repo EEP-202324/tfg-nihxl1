@@ -66,6 +66,7 @@
             
             <button type="button" class="btn btn-primary" id="btnRegistro">REGISTRARSE!</button>
 
+           
 
             </form>
         </div>

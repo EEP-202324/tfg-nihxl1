@@ -7,7 +7,7 @@ class DashboardController extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
-        $this->load->library('session');   
+        $this->load->library('session');
 
         if (!$this->session->userdata('user')) {
             redirect(base_url());
