@@ -10,19 +10,16 @@ class LogInModel extends CI_Model
 
     function log($email, $password)
     {   
-        $query = $this->db->select('user_id, email, password, role_id')
-            ->from('user')
-            ->where('email', $email)
-            ->get();
+        // $query = $this->db->select('user_id, email, password, role_id')
+        //     ->from('user')
+        //     ->where('email', $email)
+        //     ->get();
+
+        $query = $this->db->query("SELECT * FROM user WHERE email = '".$email."' AND password = '".$password."'");
 
         if ($query->num_rows() > 0) {
-            $row = $query->row_array();
-            if (password_verify($password, $row['password'])) {
-                return true;
-            }
+            return $query->row_array();
         }
-        
-        return false;
     }
 
     function getUserData($email)

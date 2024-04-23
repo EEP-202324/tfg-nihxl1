@@ -10,13 +10,12 @@ class Welcome extends CI_Controller {
 		$this->load->library('session'); 
     }
 
-	public function index()
+	function index()
 	{
 		$this->load->view('STYLES/header');
 		$this->load->view('NoLoginDonante/sidebarNoLogin');
-		$this->load->view('NoLoginDonante/navbar');
-		$this->load->view('NoLoginDonante/welcome_message');
-		$this->load->view('NoLoginDonante/footer');
+		$this->load->view('NoLoginDonante/Body/welcome_message');
 	}
+
 }
 ?>

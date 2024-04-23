@@ -23,11 +23,13 @@ class LoginController extends CI_Controller
             redirect(base_url().'welcome/index');
 
         } else {
-            $result = $this->LogInModel->log($email, $password);
+            $result = $this->LogInModel->log($email, md5($password));
+
             if ($result) {
                 $row = $this->LogInModel->getUserData($email);
                 $this->session->set_userdata('user', $email);
                 $this->session->set_userdata('role_id', $row['role_id']);
+
                 if ($row['role_id'] == '1') {
                     redirect(base_url().'Admin/DashboardController');
                 } elseif ($row['role_id'] == '2') {
