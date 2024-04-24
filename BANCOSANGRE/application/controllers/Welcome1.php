@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Welcome extends CI_Controller
+class Welcome1 extends CI_Controller
 {
     public function __construct()
     {
@@ -13,9 +13,9 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('STYLES/header');
         $this->load->view('NoLoginDonante/sidebarNoLogin');
-		
         $this->load->view('NoLoginDonante/navbar');
-		$this->load->view('NoLoginDonante/Body/welcome_message'); 
+		$this->load->view('NoLoginDonante/Body/welcome_message');
+        
 	}  
 }
 ?>

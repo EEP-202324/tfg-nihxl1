@@ -10,11 +10,11 @@ class ProfileModel extends CI_Model
 
     public function getUserData($userId)
     {
-        $query = $this->db->get_where('usuario', array('id_usuario' => $userId));
+        $this->db->select('*');
+        $query = $this->db->get_where('user', array('user_id' => $userId));
         $row = $query->row_array();
 
         if ($query->num_rows() > 0) {
-            $this->session->set_userdata('user_id', $row['id_usuario']);
             return $row;
         } else {
             return false;

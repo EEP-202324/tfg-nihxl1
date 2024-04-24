@@ -14,9 +14,6 @@
         </div>
     </div>
 
-
-
-
 <!-- <header class="bg text-white text-center p-4">
     <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
         <i class="bi bi-person-circle">Inicio de Sesión<noscript></noscript></i>     
@@ -84,7 +81,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="addressInput" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="addressInput" name="direccion">
+                        <input type="text" class="form-co+-ntrol" id="addressInput" name="direccion">
                     </div>
                     <div class="mb-3">
                         <label for="birthdayInput" class="form-label">Fecha de Nacimiento</label>
