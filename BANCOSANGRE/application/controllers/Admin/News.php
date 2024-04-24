@@ -19,7 +19,6 @@ class News extends CI_Controller
     public function index()
 	{
         $data['news'] = $this->NewsModel->obtenerNoticias();
-
 		$this->load->view('STYLES/header');
         $this->load->view('Admin/SidebarAdmin');
 		$this->load->view('Admin/Body/News');

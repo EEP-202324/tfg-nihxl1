@@ -27,7 +27,7 @@
                             <a href="<?php echo base_url('Admin/Patients');?>" class="sidebar-link">Ver todos</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Admin/Patients/addPatient');?>" class="sidebar-link">Añadir</a>
+                            <a href="<?php echo base_url('Admin/Patients/register_Patient');?>" class="sidebar-link">Añadir</a>
                         </li>
                     </ul>
                 </li>

@@ -21,10 +21,12 @@
                       <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
+                        <th>Cumpleaños</th>
+                        <th>Dirección</th>
                         <th>Telefono</th>
                         <th>Email</th>
-                        <th>Tipo Sangre</th>
-                        <th>Transfusiones</th>
+                        <th>Age</th>
+                        <th>Gender</th>
                         <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
                         <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
                         <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
@@ -38,6 +40,8 @@
                         <td>pepito@gmail.com</td>
                         <td>O-</td>
                         <td>5</td>
+                        <td>O-</td>
+                        <td>5</td>
                         <td><i class="bi bi-person-bounding-box"></i></td>
                         <td><i class="bi bi-pencil-square"></i></td>
                         <td><i class="bi bi-trash"></i></td>
@@ -49,21 +53,24 @@
                         <td>alvarez@gmail.com</td>
                         <td>O+</td>
                         <td>21</td>
+                        <td>O-</td>
+                        <td>5</td>
                         <td><i class="bi bi-person-bounding-box"></i></td>
                         <td><i class="bi bi-pencil-square"></i></td>
                         <td><i class="bi bi-trash"></i></td>
                       </tr>
-                      
-                      </tr>
+
                     </tbody>
                     <tfoot>
                       <tr>
-                      <th>Nombre</th>
+                        <th>Nombre</th>
                         <th>Apellido</th>
+                        <th>Cumpleaños</th>
+                        <th>Dirección</th>
                         <th>Telefono</th>
                         <th>Email</th>
-                        <th>Tipo Sangre</th>
-                        <th>Transfusiones</th>
+                        <th>Age</th>
+                        <th>Gender</th>
                         <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
                         <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
                         <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
