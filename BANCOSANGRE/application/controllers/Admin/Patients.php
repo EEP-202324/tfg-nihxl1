@@ -11,11 +11,19 @@ class Patients extends CI_Controller {
     }
 
     public function index() {
+        $data['patients'] = $this->PatientModel->get_all_patients();
         $this->load->view('STYLES/header');
         $this->load->view('Admin/SidebarAdmin');
-        $this->load->view('Admin/Body/Patients');
+        $this->load->view('Admin/Body/Patients', $data); 
         $this->load->view('Admin/FooterAdmin');
-    }  
+    }   
+
+    public function get_patient($user_id) {
+        
+        $data['patient'] = $this->PatientModel->get_patient($user_id);
+        echo json_encode($data);
+    }
+    
 
     public function register_patient() {
         
@@ -49,5 +57,37 @@ class Patients extends CI_Controller {
             }
         }
     }
+
+
+
+    public function delete($user_id) {
+        $result = $this->PatientModel->delete_patient($user_id);
+        if ($result) {
+            redirect('admin/patients');
+        } else {
+            
+            echo "<script>alert('Failed to delete patient.');</script>";
+        }
+    }
+
+
+    public function update_patient() {
+        // Obtener datos del formulario
+        $patient_data = array(
+            'user_id' => $this->input->post('user_id'),
+            'name' => $this->input->post('name'),
+            // Resto de los campos
+        );
+    
+        // Actualizar paciente en la base de datos
+        $result = $this->PatientModel->update_patient($patient_data);
+    
+        if ($result) {
+            echo json_encode(array("success" => true));
+        } else {
+            echo json_encode(array("success" => false));
+        }
+    }
+    
 }
 ?>

@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
 
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 
     <script src="./js/jquery-3.5.1.js"></script>
     <script src="./js/jquery.dataTables.min.js"></script>
