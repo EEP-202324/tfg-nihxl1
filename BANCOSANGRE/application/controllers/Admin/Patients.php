@@ -40,7 +40,7 @@ class Patients extends CI_Controller {
                 'birthday' => $this->input->post('birthday'),
                 'phone' => $this->input->post('phone'),
                 'email' => $this->input->post('email'),
-                'password' => $this->input->post('password'),
+                'password' => md5($this->input->post('password')), 
                 'age' => $this->input->post('age'),
                 'gender' => $this->input->post('gender'),
                 'blood_type' => $this->input->post('bloodType'),

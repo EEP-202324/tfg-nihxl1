@@ -42,7 +42,7 @@
                             <a href="<?php echo base_url('Admin/Donors');?>" class="sidebar-link">Ver todos</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Admin/Donors/addDonor');?>" class="sidebar-link">Añadir</a>
+                            <a href="<?php echo base_url('Admin/Donors/register_donor');?>" class="sidebar-link">Añadir</a>
                         </li>
                     </ul>
                 </li>

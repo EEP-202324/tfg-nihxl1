@@ -34,7 +34,7 @@
                 <tbody>
                   <?php foreach ($patients as $patient) { ?>
                     <tr>
-                      <!-- Display patient data -->
+                      
                       <td><?php echo $patient->name; ?></td>
                       <td><?php echo $patient->lastname; ?></td>
                       <td><?php echo $patient->birthday; ?></td>
@@ -46,7 +46,7 @@
                       <td><?php echo $patient->blood_type; ?></td>
                       <td><?php echo $patient->disease; ?></td>
                       <td><?php echo $patient->alergies; ?></td>
-                      <!-- View patient button -->
+                      
                       <td>
                         <button type="button" class="btn btn-primary border border-dark view-patient-btn"
                           data-bs-toggle="modal" data-bs-target="#viewPatientModal"

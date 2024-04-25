@@ -1,13 +1,13 @@
 <div class="main p-3">
     <div class="container">
         <div>
-            <h2 style="margin: 20px;">PATIENT</h2>
+            <h2 style="margin: 20px;">REGISTRAR PACIENTE</h2>
         </div>
         <div class="container">
             <div class="col-md-12 mb-3">
                 <div class="card">
                     <div class="card-header">
-                        <span><i class="bi bi-card-list" style="border: 5px; font-size: 20px;"></i></span> Add Patient
+                        <span><i class="bi bi-card-list" style="border: 5px; font-size: 20px;"></i></span> Añadir paciente
                     </div>
                     <div class="card-body">
                         <form id="formRegistro" action="<?php echo base_url('Admin/Patients/register_patient');?>" method="post">
@@ -29,10 +29,7 @@
                                         <label for="birthdayInput" class="form-label">Fecha de Nacimiento</label>
                                         <input type="date" class="form-control" id="birthdayInput" name="birthday">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="phoneInput" class="form-label">Teléfono</label>
-                                        <input type="text" class="form-control" id="phoneInput" name="phone">
-                                    </div>
+                                    
                                     <div class="mb-3">
                                         <label for="emailInput" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="emailInput" name="email">
@@ -41,12 +38,17 @@
                                         <label for="passwordInput" class="form-label">Contraseña</label>
                                         <input type="password" class="form-control" id="passwordInput" name="password">
                                     </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phoneInput" class="form-label">Teléfono</label>
+                                        <input type="text" class="form-control" id="phoneInput" name="phone">
+                                    </div>
                                     <div class="mb-3">
                                         <label for="ageInput" class="form-label">Edad</label>
                                         <input type="number" class="form-control" id="ageInput" name="age">
                                     </div>
-                                    </div>
-                                <div class="col-md-6">
                                     <div class="mb-3">
                                             <label for="genderInput" class="form-label">Sexo</label>
                                             <select class="form-select" id="genderInput" name="gender">
@@ -67,7 +69,7 @@
                                                 <option value="O-">O-</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    
                                     <div class="mb-3">
                                         <label for="diseaseInput" class="form-label">Enfermedad</label>
                                         <input type="text" class="form-control" id="diseaseInput" name="disease">
