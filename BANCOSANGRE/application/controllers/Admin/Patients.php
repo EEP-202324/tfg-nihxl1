@@ -27,9 +27,11 @@ class Patients extends CI_Controller {
 
     public function register_patient() {
         
+        $data['diseases'] = $this->PatientModel->get_all_diseases();
+        
         $this->load->view('STYLES/header');
         $this->load->view('Admin/SidebarAdmin');
-        $this->load->view('Admin/Body/AddPatient');
+        $this->load->view('Admin/Body/AddPatient',$data);
         $this->load->view('Admin/FooterAdmin');
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

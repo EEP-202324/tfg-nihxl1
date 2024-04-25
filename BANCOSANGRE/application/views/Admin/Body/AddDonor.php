@@ -68,9 +68,18 @@
                                             </select>
                                         </div>
                                     
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                         <label for="diseaseInput" class="form-label">Enfermedad</label>
                                         <input type="text" class="form-control" id="diseaseInput" name="disease">
+                                    </div> -->
+                                    <div class="mb-3">
+                                        <label for="diseaseInput" class="form-label">Enfermedad</label>
+                                        <select class="form-select" id="diseaseInput" name="disease">
+                                            <option value="">Seleccionar enfermedad</option>
+                                            <?php foreach ($diseases as $disease) : ?>
+                                                <option value="<?php echo $disease->disease_id; ?>"><?php echo $disease->disease_name; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="alergiesInput" class="form-label">Alergias</label>

@@ -31,10 +31,12 @@ class Donors extends CI_Controller
     
 
     public function register_donor() {
+
+        $data['diseases'] = $this->DonorModel->get_all_diseases();
     
         $this->load->view('STYLES/header');
         $this->load->view('Admin/SidebarAdmin');
-        $this->load->view('Admin/Body/AddDonor');
+        $this->load->view('Admin/Body/AddDonor',$data);
         $this->load->view('Admin/FooterAdmin');
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

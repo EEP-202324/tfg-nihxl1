@@ -73,6 +73,14 @@ class PatientModel extends CI_Model {
         $this->db->update('patient', $patient_data);
         return ($this->db->affected_rows() > 0) ? true : false;
     }
+
+    function get_all_diseases() {
+        $this->db->select('*');
+        $this->db->from('diseases');
+        $query = $this->db->get();
+        return $query->result(); 
+    }
+    
     
 }
 
