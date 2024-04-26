@@ -10,9 +10,6 @@ class Donors extends CI_Controller
         $this->load->model('Admin/DonorModel');
     }
 
-    function hola(){
-        echo base_url();
-    }
 
     public function index()
 	{

@@ -3,7 +3,6 @@
     <h2 style="margin: 20px;">DONANTES</h2>
   </div>
   <div class="container">
-
     <div class="row">
       <div class="col-md-12 mb-3">
         <div class="card">
