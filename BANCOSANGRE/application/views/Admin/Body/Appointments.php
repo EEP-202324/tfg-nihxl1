@@ -34,7 +34,6 @@
                       <td><?php echo $appointment->doctor; ?></td>
                       <td><?php echo $appointment->specialization; ?></td>
                       <td><?php echo $appointment->hospital; ?></td>
-                      <td><?php echo $appointment->appointment_date; ?></td>
                       <td><?php echo $appointment->reason; ?></td>
                       <td><?php echo $appointment->status; ?></td>
                       <td>
