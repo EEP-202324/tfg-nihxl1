@@ -17,29 +17,37 @@
                                         <th>Nombre</th>
                                         <th>Fecha de solicitud</th>
                                         <th>Estado</th>
-                                        <th>Acciones</th>
+                                        
+                                        <th>Aceptar</th>
+                                        <th>En espera</th>
+                                        <th>Denegar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($requests as $request) { ?>
-                                        <tr>
-                                            <td><?php echo $request['name']; ?></td>
-                                            <td><?php echo $request['request_date']; ?></td>
-                                            <td><?php echo $request['status']; ?></td>
-                                            
-                                            <td><button class="btn btn-success" onclick="acceptRequest(<?php echo $request['request_id']; ?>)">Aceptar</button></td>
-                                            <td><button class="btn btn-danger" onclick="denyRequest(<?php echo $request['request_id']; ?>)">Denegar</button></td>
-
-                                            <td><button class="btn btn-warning" onclick="putOnHold(<?php echo $request['request_id']; ?>)">En Espera</button></td>
-                                        </tr>
-                                    <?php } ?>
+                                <?php foreach ($requests as $request) { ?>
+                                    <tr>
+                                        <td><?php echo $request['name']; ?></td>
+                                        <td><?php echo $request['request_date']; ?></td>
+                                        <td id="status_<?php echo $request['request_id']; ?>"><?php echo $request['status']; ?></td>
+                                        <td> <button class="btn btn-success" onclick="acceptRequest(<?php echo $request['request_id']; ?>)"><i class="bi bi-check-circle"></i></button></td>
+                                        <td><button class="btn btn-warning" onclick="putOnHold(<?php echo $request['request_id']; ?>)"><i class="bi bi-pause-circle"></i></button></td>
+                                        <td><button class="btn btn-danger" onclick="denyRequest(<?php echo $request['request_id']; ?>)"><i class="bi bi-x-circle"></i></button></td>
+                                        
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Fecha de solicitud</th>
                                         <th>Estado</th>
-                                        <th>Acciones</th>
+                                        <th>Aceptar</th>
+                                        <th>En espera</th>
+                                        <th>Denegar</th>
+                                        <!-- <th><i class="bi bi-check-circle" style="font-size: 18px;"></i></th>
+                                        <th><i class="bi bi-pause-circle" style="font-size: 18px;"></i></th>
+                                        <th><i class="bi bi-x-circle" style="font-size: 18px;"></i></th> -->
+
                                     </tr>
                                 </tfoot>
                             </table>
@@ -51,17 +59,18 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+
 <script>
-  
-  function acceptRequest(requestId) {
+function acceptRequest(requestId) {
     $.ajax({
         url: '<?php echo base_url('Admin/Requests/accept_request/'); ?>' + requestId,
         type: 'GET',
         success: function(response) {              
             var result = JSON.parse(response);
             if (result.success) {
+                $("#status_" + requestId).text("Aceptado");
                 alert(result.message);
-                location.reload();
             } else {
                 alert(result.message);
             }
@@ -79,8 +88,8 @@ function denyRequest(requestId) {
         success: function(response) {              
             var result = JSON.parse(response);
             if (result.success) {
+                $("#status_" + requestId).text("Denegado");
                 alert(result.message);
-                location.reload();
             } else {
                 alert(result.message);
             }
@@ -98,8 +107,8 @@ function putOnHold(requestId) {
         success: function(response) {              
             var result = JSON.parse(response);
             if (result.success) {
+                $("#status_" + requestId).text("En Espera");
                 alert(result.message);
-                location.reload();
             } else {
                 alert(result.message);
             }
@@ -109,10 +118,5 @@ function putOnHold(requestId) {
         }
     });
 }
-
-
-
-
-
 
 </script>

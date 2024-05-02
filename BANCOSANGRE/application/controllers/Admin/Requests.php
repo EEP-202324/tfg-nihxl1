@@ -22,37 +22,39 @@ class Requests extends CI_Controller
 
     public function accept_request($requestId)
 {
-    // Update the request status in the database to 'Accepted'
-    $success = $this->RequestsModel->update_request_status($requestId, 'Accepted');
-    
+    $success = $this->RequestsModel->update_request_status($requestId, 'Aceptada');
+  
     if ($success) {
-        echo json_encode(['success' => true, 'message' => 'Solicitud aceptada exitosamente.']);
-    } else {
         echo json_encode(['success' => false, 'message' => 'Error al aceptar la solicitud.']);
+
+    } else {
+        echo json_encode(['success' => true, 'message' => 'Solicitud aceptada exitosamente.']);
+
     }
 }
 
-// Deny request
+
 public function deny_request($requestId)
 {
-    $success = $this->RequestsModel->update_request_status($requestId, 'Denied');
+    $success = $this->RequestsModel->update_request_status($requestId, 'Denegada');
     
     if ($success) {
-        echo json_encode(['success' => true, 'message' => 'Solicitud denegada exitosamente.']);
-    } else {
         echo json_encode(['success' => false, 'message' => 'Error al denegar la solicitud.']);
+    } else {
+        echo json_encode(['success' => true, 'message' => 'Solicitud denegada exitosamente.']);
     }
 }
 
 public function put_on_hold($requestId)
 {
-    // Update the request status in the database to 'On Hold'
-    $success = $this->RequestsModel->update_request_status($requestId, 'On Hold');
+    $success = $this->RequestsModel->update_request_status($requestId, 'En espera');
     
     if ($success) {
-        echo json_encode(['success' => true, 'message' => 'Solicitud puesta en espera exitosamente.']);
-    } else {
         echo json_encode(['success' => false, 'message' => 'Error al poner en espera la solicitud.']);
+
+    } else {
+        echo json_encode(['success' => true, 'message' => 'Solicitud puesta en espera exitosamente.']);
+
     }
 }
 

@@ -8,7 +8,7 @@ class News extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('Admin/NewsModel');
-
+        
 
         if(!$this->session->userdata('user'))
         {
@@ -40,4 +40,4 @@ class News extends CI_Controller
         }
     }
 }
-?>                                 
+?>

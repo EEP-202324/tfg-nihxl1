@@ -14,7 +14,7 @@ class NewsModel extends CI_Model
         $pattern = "/\bhttps?:\/\/\S+\b/";
         preg_match($pattern, $description, $matches);
         $media_url = isset($matches[0]) ? $matches[0] : '';
-       
+        
         $data = array(
             'name' => $name,
             'description' => $description,
