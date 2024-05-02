@@ -3,92 +3,116 @@
         <h2 style="margin: 20px;">SOLICITUDES</h2>
     </div>
     <div class="container">
-    <div class="row">
-          <div class="col-md-12 mb-3">
-            <div class="card">
-              <div class="card-header">
-                <span><i class="bi bi-table me-2"></i></span> Todos las citas
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    id="example"
-                    class="table table-striped data-table"
-                    style="width: 100%"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Doctor</th>
-                        <th>Hospital</th>
-                        <th>Tipo</th>
-                        <th>Especialidad</th>
-                        <th>Estado</th>
-                        <th><i class="bi bi-eye" style="font-size: 18px;"></i></th>
-                        <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
-                        <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Pepito</td>
-                        <td>2024/05/12</td>
-                        <td>12:00</td>
-                        <td>Juan Alvarez</td>
-                        <td>34</td>
-                        <td>Donante</td>
-                        <td>-</td>
-                        <td>Cancelada</td>
-                        <td><i class="bi bi-eye"></i></td>
-                        <td><i class="bi bi-pencil-square"></i></td>
-                        <td><i class="bi bi-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <td>Jorge</td>
-                        <td>Alvarez</td>
-                        <td>612389789</td>
-                        <td>alvarez@gmail.com</td>
-                        <td>O+</td>
-                        <td>21</td>
-                        <td>O+</td>
-                        <td>21</td>
-                        <td><i class="bi bi-eye"></i></td>
-                        <th><i class="bi bi-pencil-square"></i></th>
-                        <th><i class="bi bi-trash"></i></th>
-                      </tr> 
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                      <th>Nombre</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Doctor</th>
-                        <th>Hospital</th>
-                        <th>Tipo</th>
-                        <th>Especialidad</th>
-                        <th>Estado</th>
-                        <th><i class="bi bi-eye" style="font-size: 18px;"></i></th>
-                        <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
-                        <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
-                      </tr>
-                    </tfoot>
-                  </table>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="bi bi-table me-2"></i></span> Todas las citas
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="table table-striped data-table" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Fecha de solicitud</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($requests as $request) { ?>
+                                        <tr>
+                                            <td><?php echo $request['name']; ?></td>
+                                            <td><?php echo $request['request_date']; ?></td>
+                                            <td><?php echo $request['status']; ?></td>
+                                            
+                                            <td><button class="btn btn-success" onclick="acceptRequest(<?php echo $request['request_id']; ?>)">Aceptar</button></td>
+                                            <td><button class="btn btn-danger" onclick="denyRequest(<?php echo $request['request_id']; ?>)">Denegar</button></td>
+
+                                            <td><button class="btn btn-warning" onclick="putOnHold(<?php echo $request['request_id']; ?>)">En Espera</button></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Fecha de solicitud</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </main>
-    
-<script>
-$(document).ready(function () {
-  $(".data-table").each(function (_, table) {
-    $(table).DataTable();
-  });
-});</script> 
-
-
+    </div>
 </div>
+
+<script>
+  
+  function acceptRequest(requestId) {
+    $.ajax({
+        url: '<?php echo base_url('Admin/Requests/accept_request/'); ?>' + requestId,
+        type: 'GET',
+        success: function(response) {              
+            var result = JSON.parse(response);
+            if (result.success) {
+                alert(result.message);
+                location.reload();
+            } else {
+                alert(result.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+function denyRequest(requestId) {
+    $.ajax({
+        url: '<?php echo base_url('Admin/Requests/deny_request/'); ?>' + requestId,
+        type: 'GET',
+        success: function(response) {              
+            var result = JSON.parse(response);
+            if (result.success) {
+                alert(result.message);
+                location.reload();
+            } else {
+                alert(result.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+function putOnHold(requestId) {
+    $.ajax({
+        url: '<?php echo base_url('Admin/Requests/put_on_hold/'); ?>' + requestId,
+        type: 'GET',
+        success: function(response) {              
+            var result = JSON.parse(response);
+            if (result.success) {
+                alert(result.message);
+                location.reload();
+            } else {
+                alert(result.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+
+
+
+
+
+</script>
