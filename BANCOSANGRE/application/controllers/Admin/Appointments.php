@@ -15,7 +15,7 @@ class Appointments extends CI_Controller
             redirect(base_url());
         }
     }
-
+    
     public function index()
 	{
         $data['appointments'] = $this->AppointmentsModel->get_all_appointments();

@@ -34,6 +34,7 @@
                       <td><?php echo $appointment->doctor; ?></td>
                       <td><?php echo $appointment->specialization; ?></td>
                       <td><?php echo $appointment->hospital; ?></td>
+                      <td><?php echo $appointment->appointment_date; ?></td>
                       <td><?php echo $appointment->reason; ?></td>
                       <td><?php echo $appointment->status; ?></td>
                       <td>
@@ -95,27 +96,30 @@
 </div>
 
 
+<!-- <th>Nombre</th>
+                    <th>Doctor</th>
+                    <th>Especialidad</th>
+                    <th>Hospital</th>
+                    <th>Fecha</th> 
+                    <th>Razón</th>
+                    <th>Estado</th> -->
 
 <div class="modal fade" id="viewappointmentModal" tabindex="-1" aria-labelledby="viewappointmentModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="viewappointmentModalLabel">Ver Paciente</h5>
+        <h5 class="modal-title" id="viewappointmentModalLabel">Ver cita</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div id="appointmentData">
           <p><strong>Nombre:</strong> <span id="viewName"></span></p>
-          <p><strong>Apellido:</strong> <span id="viewLastname"></span></p>
-          <p><strong>Fecha de nacimiento:</strong> <span id="viewBirthday"></span></p>
-          <p><strong>Dirección:</strong> <span id="viewAddress"></span></p>
-          <p><strong>Telefono:</strong> <span id="viewPhone"></span></p>
-          <p><strong>Email:</strong> <span id="viewEmail"></span></p>
-          <p><strong>Edad:</strong> <span id="viewAge"></span></p>
-          <p><strong>Sexo:</strong> <span id="viewGender"></span></p>
-          <p><strong>Tipo sangre:</strong> <span id="viewBloodType"></span></p>
-          <p><strong>Enfermedades:</strong> <span id="viewDisease"></span></p>
-          <p><strong>Alergias:</strong> <span id="viewAllergies"></span></p>
+          <p><strong>Doctor:</strong> <span id="viewDoctor"></span></p>
+          <p><strong>Especialidad:</strong> <span id="viewSpecialization"></span></p>
+          <p><strong>Hospital:</strong> <span id="viewAddress"></span></p>
+          <p><strong>Fecha:</strong> <span id="viewPhone"></span></p>
+          <p><strong>Razon:</strong> <span id="viewAge"></span></p>
+          <p><strong>Estado:</strong> <span id="viewGender"></span></p>
         </div>
       </div>
     </div>
@@ -129,7 +133,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editappointmentModalLabel">Editar donante</h5>
+        <h5 class="modal-title" id="editappointmentModalLabel">Editar cita</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -137,48 +141,32 @@
         <form id="editappointmentForm">
           <input type="hidden" id="editUserId" name="appointment_id">
           <div class="mb-3">
-            <label for="editName" class="form-label">Name</label>
+            <label for="editName" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="editName" name="name">
           </div>
           <div class="mb-3">
-            <label for="editLastname" class="form-label">Lastname</label>
-            <input type="text" class="form-control" id="editLastname" name="lastname">
+            <label for="editLastname" class="form-label">Doctor</label>
+            <input type="text" class="form-control" id="editDoctor" name="lastname">
           </div>
           <div class="mb-3">
-            <label for="editBirthday" class="form-label">Birthday</label>
-            <input type="text" class="form-control" id="editBirthday" name="birthday">
+            <label for="editBirthday" class="form-label">Especialidad</label>
+            <input type="text" class="form-control" id="editSpecialization" name="birthday">
           </div>
           <div class="mb-3">
-            <label for="editAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="editAddress" name="address">
+            <label for="editAddress" class="form-label">Hospital</label>
+            <input type="text" class="form-control" id="editHospital" name="address">
           </div>
           <div class="mb-3">
-            <label for="editPhone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="editPhone" name="phone">
+            <label for="editPhone" class="form-label">Fecha</label>
+            <input type="text" class="form-control" id="editAppointment_date" name="phone">
           </div>
           <div class="mb-3">
-            <label for="editEmail" class="form-label">Email</label>
-            <input type="text" class="form-control" id="editEmail" name="email">
+            <label for="editEmail" class="form-label">Razón</label>
+            <input type="text" class="form-control" id="editReason" name="email">
           </div>
           <div class="mb-3">
-            <label for="editAge" class="form-label">Age</label>
-            <input type="text" class="form-control" id="editAge" name="age">
-          </div>
-          <div class="mb-3">
-            <label for="editGender" class="form-label">Gender</label>
-            <input type="text" class="form-control" id="editGender" name="gender">
-          </div>
-          <div class="mb-3">
-            <label for="editBloodType" class="form-label">Blood Type</label>
-            <input type="text" class="form-control" id="editBloodType" name="bloodType">
-          </div>
-          <div class="mb-3">
-            <label for="editDisease" class="form-label">Disease</label>
-            <input type="text" class="form-control" id="editDisease" name="disease">
-          </div>
-          <div class="mb-3">
-            <label for="editAllergies" class="form-label">Allergies</label>
-            <input type="text" class="form-control" id="editAllergies" name="allergies">
+            <label for="editAge" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="editStatus" name="age">
           </div>
           <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
@@ -201,7 +189,7 @@ $(document).ready(function() {
       dataType: "json",
       success: function(response) {
         var appointmentData = response.appointment;
-        // Iterar sobre las claves del paciente y actualizar los elementos del modal
+        
         $.each(appointmentData, function(key, value) {
           $("#view" + key.charAt(0).toUpperCase() + key.slice(1)).text(value);
         });

@@ -17,33 +17,6 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
-
-                    <!-- <div class="row">
-                        <div class="col border-right border-danger">
-                            <div class="card-body text-secondary text-center">
-                                <h5 class="card-title">A+<i class="bi bi-droplet-half"></i></h5>
-                                <p class="card-text">12</p>
-                            </div>
-                        </div>
-                        <div class="col border-right border-danger">
-                            <div class="card-body text-secondary text-center">
-                                <h5 class="card-title">A+<i class="bi bi-droplet-half"></i></h5>
-                                <p class="card-text">12</p>
-                            </div>
-                        </div>
-                        <div class="col border-right border-danger">
-                            <div class="card-body text-secondary text-center">
-                                <h5 class="card-title">A+<i class="bi bi-droplet-half"></i></h5>
-                                <p class="card-text">12</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card-body text-secondary text-center">
-                                <h5 class="card-title">A+<i class="bi bi-droplet-half"></i></h5>
-                                <p class="card-text">12</p>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-sm-4 mb-3">
@@ -63,17 +36,17 @@
                     <div class="col-sm-4 mb-3 mb-sm-0">
                         <div class="card h-100 d-flex align-items-center justify-content-center">
                             <div class="card-body text-center">
-                                <canvas id="myChart4" style="width: 100%; height: 250%;"></canvas>
+                                <canvas id="myChart5" style="width: 100%; height: 100%;"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex align-items-center justify-content-center">
-                <div class="card border-secondary mb-3 h-100" style="max-width: 200rem;">
-                    <div class="card-body text-secondary text-center d-flex flex-column justify-content-center" style="height: 100%;">
-                        <!-- -->
-                        <div class="card h-100" id="aviso">
+            <div class="col-md-3 d-flex align-items-center justify-content-center" style="top-margin: 0.5cm" >
+                <div class="card border-secondary mb-3 h-100" style="max-width: 200rem;" >
+                    <div class="card-body text-secondary text-center d-flex flex-column justify-content-center" style="height: 100%;" style="top-margin: 0.5cm">
+                        
+                        <div class="card h-90" id="aviso" style="bottom-margin: 4.5cm">
                             <div class="card-header">
                                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
                                 AVISO
@@ -82,7 +55,7 @@
                                 dfgdg
                             </div>
                         </div> 
-                        <!----> 
+                        
                         <canvas id="myChart" style="max-height: 100%;"></canvas>
                     </div>
                 </div>
@@ -154,13 +127,22 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const data = {
-            labels: ['A', 'B', 'AB', 'O', 'RH NEUTRO'],
+
+
+   const ctx = document.getElementById('myChart').getContext('2d');
+
+    const aggregatedBloodInventoryData = <?php echo json_encode($aggregated_blood_inventory); ?>;
+
+    const labels = aggregatedBloodInventoryData.map(item => item.type);
+    const data = aggregatedBloodInventoryData.map(item => item.total_quantity);
+
+    const config = {
+        type: 'doughnut',
+        data: {
+            labels: labels,
             datasets: [{
-                label: 'Dataset 1',
-                data: [20, 30, 40, 10, 60],
+                label: 'Blood Inventory',
+                data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',
@@ -177,163 +159,110 @@
                 ],
                 borderWidth: 1
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Cantidad de sangre'
+                },
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    };
+
+const myChart = new Chart(ctx, config);
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('myChart2').getContext('2d');
+        const donations = <?php echo json_encode($recent_donations); ?>;
+        const transfusions = <?php echo json_encode($recent_transfusions); ?>;
+
+        const labels = [''];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Donaciones',
+                    data: donations.map(item => item.count),
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 2,
+                },
+                {
+                    label: 'Transfusiones',
+                    data: transfusions.map(item => item.count),
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 2,
+                }
+            ]
         };
+
         const config = {
-            type: 'doughnut',
+            type: 'bar',
             data: data,
             options: {
+                indexAxis: 'y',
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
                 plugins: {
-                    title: {
-                        display: true,
-                        text: 'Edades/donantes/transfusiones'
-                    },
                     legend: {
                         position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Donaciones/Transfusiones en los últimos 6 meses'
+                    }
+                }
+            },
+        };
+
+        const myChart2 = new Chart(ctx, config);
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = <?php echo json_encode($patient_diseases); ?>;
+
+        const config = {
+            type: 'bar',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Enfermedades por paciente',
+                    data: data.data,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Enfermedades por paciente'
                     }
                 }
             }
         };
-        const myChart = new Chart(ctx, config);
+
+        const ctx3 = document.getElementById('myChart3').getContext('2d');
+        const myChart3 = new Chart(ctx3, config);
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-    const DATA_COUNT = 7;
-    const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
 
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']; 
-    const data = {
-        labels: labels,
-        datasets: [
-            {
-                label: 'Transfusiones',
-                data: [-30,-70,20, 30, 40, 10, 60, 50, 70], 
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderWidth: 2,
-            },
-            {
-                label: 'Donaciones',
-                data: [40, 50, 30, 70, 45, 55, 25], 
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderWidth: 2,
-            }
-        ]
-    };
-
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {
-            indexAxis: 'y',
-            elements: {
-                bar: {
-                    borderWidth: 2,
-                }
-            },
-            responsive: true,
-            plugins: {
-                legend: {
-
-
-
-                    position: 'bottom',
-                },
-                title: {
-                    display: true,
-                    text: 'Donaciones/Transfusiones'
-                }
-            }
-        },
-    };
-
-    const ctx2 = document.getElementById('myChart2').getContext('2d');
-    const myChart2 = new Chart(ctx2, config);
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const DATA_COUNT = 7;
-    const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
-
-    const labels = ['Cirugía', 'Anemia', 'Trauma', 'Autoinmune', 'Cáncer', 'Hematologicas', 'Gastro','Renales'];
-    const data = {
-        labels: labels,
-        datasets: [
-            {
-                label: 'Transfusiones',
-                data: [-40,20, 30, 40, 10, 60, 50, 70],
-                borderColor: 'rgba(255, 159, 64, 0.5)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderWidth: 2,
-            }
-        ]
-    };
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                },
-                title: {
-                    display: true,
-                    text: 'Enfermedades/ transfusión'
-                }
-            }
-        },
-    };
-
-    const ctx3 = document.getElementById('myChart3').getContext('2d');
-    const myChart3 = new Chart(ctx3, config);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const DATA_COUNT = 5;
-    const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 };
-
-    const labels = ['<18', '18-25', '25-40', '40-65', '>65'];
-    const data = {
-        labels: labels,
-        datasets: [
-            {
-                label: 'pep',
-                data: [40, 30, 20, 50, 60], 
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(255, 205, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(54, 162, 235, 0.5)'
-                ]
-            }
-        ]
-    };
-
-    const config = {
-        type: 'polarArea',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                },
-                title: {
-                    display: true,
-                    text: 'Edades/ transfusiones'
-                }
-            }
-        },
-    };
-
-    const ctx4 = document.getElementById('myChart4').getContext('2d');
-    const myChart4 = new Chart(ctx4, config);
-});
-  
 
 const actions = [{
         name: 'Randomize',

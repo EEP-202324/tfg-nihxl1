@@ -14,5 +14,94 @@ class BloodManagementModel extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function get_patient_diseases_data() {
+        // Seleccionar el nombre de la enfermedad de la tabla de enfermedades para cada paciente
+        $this->db->select('d.disease_name');
+        $this->db->from('patient p');
+        $this->db->join('diseases d', 'p.disease = d.disease_id');
+        $query = $this->db->get();
+
+        // Contar cuántos pacientes tienen cada enfermedad
+        $disease_counts = array_count_values(array_column($query->result_array(), 'disease_name'));
+
+        // Preparar los datos para el gráfico
+        $labels = array_keys($disease_counts);
+        $data = array_values($disease_counts);
+
+        return array('labels' => $labels, 'data' => $data);
+    }
+
+    
+// DonationsModel
+    public function get_recent_donations_data() {
+        $six_months_ago = date('Y-m-d', strtotime('-6 months'));
+
+        $query = $this->db->query("
+            SELECT 
+                MONTH(donation_date) AS month,
+                COUNT(*) AS count
+            FROM 
+                donation
+            WHERE 
+                donation_date >= '$six_months_ago'
+            GROUP BY 
+                MONTH(donation_date)
+        ");
+
+        return $query->result();
+    }
+
+    // TransfusionsModel
+    public function get_recent_transfusions_data() {
+        $six_months_ago = date('Y-m-d', strtotime('-6 months'));
+
+        $query = $this->db->query("
+            SELECT 
+                MONTH(transfusion_date) AS month,
+                COUNT(*) AS count
+            FROM 
+                transfusions
+            WHERE 
+                transfusion_date >= '$six_months_ago'
+            GROUP BY 
+                MONTH(transfusion_date)
+        ");
+
+        return $query->result();
+    }
+    public function get_donor_age_distribution() {
+        $query = $this->db->query("
+            SELECT 
+                CASE
+                    WHEN FLOOR(DATEDIFF(CURDATE(), u.birthday) / 365) < 18 THEN '<18'
+                    WHEN FLOOR(DATEDIFF(CURDATE(), u.birthday) / 365) BETWEEN 18 AND 25 THEN '18-25'
+                    WHEN FLOOR(DATEDIFF(CURDATE(), u.birthday) / 365) BETWEEN 26 AND 40 THEN '26-40'
+                    WHEN FLOOR(DATEDIFF(CURDATE(), u.birthday) / 365) BETWEEN 41 AND 65 THEN '41-65'
+                    ELSE '>65'
+                END AS age_group,
+                COUNT(*) AS donor_count
+            FROM 
+                donor d
+            JOIN 
+                user u ON d.user_id = u.user_id
+            GROUP BY 
+                age_group
+        ");
+    
+        return $query->result();
+    }
+    
+
+    public function get_aggregated_blood_inventory_data() {
+        $this->db->select('type, SUM(quantity) as total_quantity');
+        $this->db->group_by('type');
+        $query = $this->db->get('bloodinventory');
+        return $query->result_array();
+    }
+    
+
+
+
 }
 ?>
