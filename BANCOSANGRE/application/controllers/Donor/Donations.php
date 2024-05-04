@@ -7,26 +7,27 @@ class Donations extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('Donor/DonationsHistoryModel');
 
-        if(!$this->session->userdata('user'))
-        {
+        if (!$this->session->userdata('user')) {
             redirect(base_url());
         }
     }
 
-    function hola(){
-        echo base_url();
-    }
-
     public function index()
-	{
-		$this->load->view('STYLES/header');;
-        $this->load->view('Donor/SidebarDonor');
-		$this->load->view('Donor/Body/Donations');
-	} 
+    {
+        $user_id = $this->session->userdata('user')['user_id'];
 
-   
+        
+        $data['donations'] = $this->DonationsHistoryModel->getDonorDonations($user_id);
+
+        // Load views
+        $this->load->view('STYLES/header');
+        $this->load->view('Donor/SidebarDonor', $data);
+        $this->load->view('Donor/Body/Donations');
+    }
     
+
 
 }
 ?>
