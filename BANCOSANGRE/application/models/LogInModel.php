@@ -20,6 +20,7 @@ class LogInModel extends CI_Model
         if ($query->num_rows() > 0) {
             return $query->row_array();
         }
+
     }
 
     function getUserData($email)

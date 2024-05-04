@@ -27,7 +27,9 @@ class PatientModel extends CI_Model {
     }
       
     public function register_patient($patient_data) {
-        
+    
+        $hashed_password = password_hash($patient_data['password'], PASSWORD_DEFAULT);
+    
         $user_data = array(
             'name' => $patient_data['name'],
             'lastname' => $patient_data['lastname'],
@@ -35,7 +37,7 @@ class PatientModel extends CI_Model {
             'address' => $patient_data['address'],
             'phone' => $patient_data['phone'],
             'email' => $patient_data['email'],
-            'password' => $patient_data['password'],
+            'password' => $hashed_password,
             'age' => $patient_data['age'],
             'gender' => $patient_data['gender'],
             'role_id' => 3
@@ -55,6 +57,7 @@ class PatientModel extends CI_Model {
     
         return ($this->db->affected_rows() != 1) ? false : true;
     }
+    
 
     public function delete_patient($user_id) {
         

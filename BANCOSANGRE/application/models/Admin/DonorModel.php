@@ -27,7 +27,9 @@ class DonorModel extends CI_Model
     }
       
     public function register_donor($donor_data) {
-        
+
+        $hashed_password = md5($donor_data['password']);
+    
         $user_data = array(
             'name' => $donor_data['name'],
             'lastname' => $donor_data['lastname'],
@@ -35,7 +37,7 @@ class DonorModel extends CI_Model
             'address' => $donor_data['address'],
             'phone' => $donor_data['phone'],
             'email' => $donor_data['email'],
-            'password' => $donor_data['password'],
+            'password' => $hashed_password,
             'age' => $donor_data['age'],
             'gender' => $donor_data['gender'],
             'role_id' => 2
