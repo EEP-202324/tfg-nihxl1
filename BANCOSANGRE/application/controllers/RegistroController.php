@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Registro extends CI_Controller {
+class RegistroController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -12,17 +12,17 @@ class Registro extends CI_Controller {
 
     public function guardar_registro() {
         
-        $name = $this->input->post('name');
-        $lastname = $this->input->post('lastname');
-        $address = $this->input->post('address');
-        $birthday = $this->input->post('birthday');
-        $phone = $this->input->post('phone');
+        $name = $this->input->post('nombre'); 
+        $lastname = $this->input->post('apellido');
+        $address = $this->input->post('direccion');
+        $birthday = $this->input->post('fecha_nacimiento');
+        $phone = $this->input->post('telefono');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-        $gender = $this->input->post('gender');
+        $gender = $this->input->post('genero');
         $age = $this->input->post('age');
 
-        $datos_usuario = array(
+        $datosForm = array(
             'name' => $name,
             'lastname' => $lastname,
             'address' => $address,
@@ -37,15 +37,12 @@ class Registro extends CI_Controller {
 
         if ($this->RegistroModel->guardar_usuario($datosForm)) {
             $this->session->set_flashdata('success', 'Registro correcto');
-                redirect(base_url().'Donor/Dashboard'); 
+            redirect(base_url().'Donor/Dashboard'); 
         } else {
             $this->session->set_flashdata('error', 'Registro incorrecto');
-                redirect('Welcome'); 
+            redirect('Welcome'); 
         }
 
-    }
-
-    
+    } 
 }
-
 ?>

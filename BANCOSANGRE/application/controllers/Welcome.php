@@ -7,15 +7,19 @@ class Welcome extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('Admin/NewsModel');
     }
 
     public function index()
 	{
+
+        $data['news'] = $this->NewsModel->obtenerNoticias();
 		$this->load->view('STYLES/header');
         $this->load->view('NoLoginDonante/sidebarNoLogin');
 		
         $this->load->view('NoLoginDonante/navbar');
-		$this->load->view('NoLoginDonante/Body/welcome_message'); 
+		$this->load->view('NoLoginDonante/Body/welcome_message', $data); 
 	}  
+
 }
 ?>

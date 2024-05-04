@@ -3,30 +3,6 @@
 <div class="container">
 <title>Inicio Donante</title>
 
-<div class="d-flex justify-content-between align-items-center">
-        <h2 style="margin: 20px;">ULTIMAS NOTICIAS</h2>
-        <div class="d-flex">
-        <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-        <i class="bi bi-person-circle">Inicio de Sesión<noscript></noscript></i>     
-        </button>
-        <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-            <i class="bi bi-person-circle">Registro</i>     
-        </button>
-        </div>
-    </div>
-
-
-
-
-<!-- <header class="bg text-white text-center p-4">
-    <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-        <i class="bi bi-person-circle">Inicio de Sesión<noscript></noscript></i>     
-    </button>
-    <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-        <i class="bi bi-person-circle">Registro</i>     
-    </button>
-</header> -->
-
 <style>
         header {
             color: white;
@@ -73,8 +49,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form method="post" action="<?php echo base_url('Registro/guardar_registro'); ?>">
-
+            <form method="post" action="<?php echo base_url('RegistroController/guardar_registro'); ?>">
                     <div class="mb-3">
                         <label for="nameInput" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nameInput" name="nombre">
@@ -123,25 +98,35 @@
 
 
 
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker({ format: 'YYYY-MM-DD' });
-        
 
-    });
-</script>
 <div class="container ">
     <div class="row">
         <div class="col-md-9">
             <div class="row">
+            <?php foreach ($news as $item) { ?>
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Noticia 1</h5>
-                            <p class="card-text">Descripción de la noticia.</p>
+                            <div class="row">
+                                <?php if (!empty($item['multimedia'])) { ?>
+                                    <div class="col-md-8">
+                                        <h5 class="card-title"><?php echo $item['name']; ?></h5>
+                                        <p class="card-text"><?php echo $item['description']; ?></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="<?php echo $item['multimedia']; ?>" alt="Image" class="news-image">
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="col-md-12">
+                                        <h5 class="card-title"><?php echo $item['name']; ?></h5>
+                                        <p class="card-text"><?php echo $item['description']; ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </div>
+            <?php } ?>
             </div>
         </div>
         <div class="col-md-3">
@@ -182,3 +167,9 @@
 
 
 
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({ format: 'YYYY-MM-DD' });
+    
+    });
+</script>

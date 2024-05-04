@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class News extends CI_Controller
 {
     public function __construct()
@@ -9,23 +10,22 @@ class News extends CI_Controller
         $this->load->library('session');
         $this->load->model('Admin/NewsModel');
         
-
-        if(!$this->session->userdata('user'))
-        {
+        if (!$this->session->userdata('user')) {
             redirect(base_url());
         }
     }
 
     public function index()
-	{
+    {
         $data['news'] = $this->NewsModel->obtenerNoticias();
-		$this->load->view('STYLES/header');
+        
+        $this->load->view('STYLES/header');
         $this->load->view('Admin/SidebarAdmin');
-		$this->load->view('Admin/Body/News');
+        $this->load->view('Admin/Body/News', $data); 
         $this->load->view('Admin/FooterAdmin');
-	} 
+    }
 
-    function addNew()
+    public function addNew()
     {
         $this->load->view('STYLES/header');
         $this->load->view('Admin/SidebarAdmin');
@@ -36,8 +36,36 @@ class News extends CI_Controller
             $name = $this->input->post("newsName");
             $description = $this->input->post("newsDescription");
             $this->NewsModel->createNew($name, $description);
-            redirect(base_url().'Admin/DashboardController');
+            redirect(base_url().'Admin/News');
         }
     }
+
+    // public function deleteNews()
+    // {
+    //     $id = $this->input->post('newsID'); 
+    
+    //     $this->NewsModel->deleteNewsById($id); 
+    
+    //     echo json_encode(['success' => true]);
+    // }
+    
+    public function deleteNews()
+    {
+        $id = $this->input->post('newsID'); 
+    
+        if (!empty($id)) {
+            if ($this->NewsModel->deleteNewsById($id)) {
+                echo json_encode(['success' => false]);
+            } else {
+                
+                echo json_encode(['success' => true]);
+            }
+        } else {
+            echo json_encode(['success' => false]);
+        }
+    }
+    
+    
+
 }
 ?>

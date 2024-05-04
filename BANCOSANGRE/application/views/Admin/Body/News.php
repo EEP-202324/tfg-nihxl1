@@ -4,32 +4,52 @@
         <div class="d-flex">
             <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-plus-circle-fill"></i>
-            </button>
-            <button class="btn btn-warning me-2" type="submit">
-                <i class="bi bi-pen-fill"></i>
-            </button>
-            <button class="btn btn-danger" type="submit" style="margin-right: 70px;">
-                <i class="bi bi-trash3"></i>
-            </button>
+            </button>   
         </div>
     </div>
     <div class="container"> 
         <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Noticia 1</h5>
-                                <p class="card-text">Descripción de la noticia.</p>
-                            </div>
+        <?php foreach ($news as $item) { ?>
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="position-relative">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-<?php echo !empty($item['multimedia']) ? '8' : '12'; ?>">
+                            <h5 class="card-title"><?php echo $item['name']; ?></h5>
+                            <p class="card-text"><?php echo $item['description']; ?></p>
                         </div>
+                        <?php if (!empty($item['multimedia'])) { ?>
+                            <div class="col-md-4">
+                                <img src="<?php echo $item['multimedia']; ?>" alt="Imagen" class="news-image">
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
+                <button type="button" class="btn btn-danger position-absolute top-0 end-0 m-3 delete-news-btn" data-news-id="<?php echo $item['newsID']; ?>">
+                    <i class="bi bi-trash3-fill"></i>
+                </button>
             </div>
-        </div>  
+        </div>
     </div>
-</div> 
+<?php } ?>
+
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-danger {
+        background-color: #71091E;
+    }
+
+    .news-image {
+        width: 100%; 
+        height: auto;
+    }
+</style>
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -84,3 +104,29 @@
         background-color: #71091E;
     }
 </style>
+
+
+
+<script>
+    $(document).ready(function(){
+        $(".delete-news-btn").click(function(){
+            var newsID = $(this).data("news-id");
+            if(confirm("Are you sure you want to delete this news?")){
+                $.ajax({
+                    url: "<?php echo base_url('Admin/News/deleteNews'); ?>",
+                    type: "POST",
+                    data: {newsID: newsID},
+                    dataType: "json",
+                    success: function(data){
+                        if(data.success){
+                            location.reload();
+                        } else {
+                            alert("Failed to delete news.");
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+
