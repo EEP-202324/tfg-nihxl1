@@ -8,7 +8,7 @@ class RequestModel extends CI_Model
         $this->load->library('session');
     }
 
-    public function getDonorIdFromUserId($user_id)
+   public function getDonorIdFromUserId($user_id)
     {
         $this->db->select('donor_id');
         $this->db->where('user_id', $user_id);
@@ -20,7 +20,7 @@ class RequestModel extends CI_Model
             return null; 
         }
     }
-
+ 
     public function getRequests($donor_id)
     {
         $this->db->select('r.*, u.name AS name, u.lastname AS lastname');

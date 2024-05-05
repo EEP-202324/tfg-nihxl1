@@ -10,7 +10,12 @@
                         <span><i class="bi bi-card-list" style="border: 5px; font-size: 20px;"></i></span> Añadir donante
                     </div>
                     <div class="card-body">
-                        <form id="formRegistro" action="#" method="post">
+                     <?php if (!empty($requests) && $requests[0]['resultado'] == 'Apto'): ?>
+                            <div class="alert alert-danger" role="alert">
+                                Apto para donar. Acérquese al médico ambulante más cercano para asegurarse.
+                            </div>
+                        <?php endif; ?>
+                        <form id="formRegistro" action="<?php echo base_url('Donor/quiz/process_quiz'); ?>" method="post">                    
                             <ul>
                                 <li>
                                     <h3>ENFERMEDADES</h3>
@@ -133,7 +138,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary btn-custom" id="btnRegistro" style="margin-left: auto; margin-right: auto; display: block;"><i class="bi bi-person-fill-add"></i> RESULAADO</button>
+                            <button type="submit" class="btn btn-primary btn-custom" id="btnRegistro" style="margin-left: auto; margin-right: auto; display: block;"><i class="bi bi-person-fill-add"></i> RESULTADO</button>
                         </form>
                     </div>
                 </div>
