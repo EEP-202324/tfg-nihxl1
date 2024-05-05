@@ -9,7 +9,7 @@
         <div class="card-body text-center">
           <img src="" alt="Foto perfil" class="profile-img mb-3">
         </div>
-      </div>
+      </div> 
     </div>
     <div class="col-md-8">
       <div class="card h-100">
@@ -65,11 +65,10 @@
               </tr>
               <tr>
                   <th scope="row">Diseases</th>
-                  <td><?php echo $user->diseases; ?></td>
+                  <td><?php echo $user->disease; ?></td>
               </tr>
             </tbody>
           </table>
-          
         </div>
       </div>
     </div>

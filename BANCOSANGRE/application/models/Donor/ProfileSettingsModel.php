@@ -10,7 +10,7 @@ class ProfileSettingsModel extends CI_Model
 
     public function getUserData($user_id)
     {
-        $this->db->select('*');
+        $this->db->select('*'); 
         $this->db->from('user');
         $this->db->join('donor', 'user.user_id = donor.user_id');
         $this->db->where('user.user_id', $user_id);
@@ -18,11 +18,6 @@ class ProfileSettingsModel extends CI_Model
         return $query->row();
     }
 
-    public function updateUserData($user_id, $data)
-{
-    $this->db->where('user_id', $user_id);
-    $this->db->update('user', $data);
-}
 
 }
 ?>

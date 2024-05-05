@@ -1,5 +1,5 @@
 <?php
-class NewsModel extends CI_Model
+class ProfileSettingsModel extends CI_Model
 {
     function __construct()
     {
@@ -7,6 +7,17 @@ class NewsModel extends CI_Model
         $this->load->database();
         $this->load->library('session');
     }
+
+    public function getUserData($user_id)
+    {
+        $this->db->select('*'); 
+        $this->db->from('user');
+        $this->db->join('patient', 'user.user_id = patient.user_id');
+        $this->db->where('user.user_id', $user_id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 
 }
 ?>
