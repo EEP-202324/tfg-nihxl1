@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard extends CI_Controller
@@ -7,22 +8,21 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('Donor/DashboardModel');
 
-        if(!$this->session->userdata('user'))
-        {
+        if (!$this->session->userdata('user')) {
             redirect(base_url());
         }
     }
 
-    function hola(){
-        echo base_url();
-    }
-
     public function index()
 	{
-		$this->load->view('STYLES/header');;
+        $user_id = $this->session->userdata('user')['user_id'];
+        $data['user_name'] = $this->DashboardModel->getUserName($user_id);
+
+		$this->load->view('STYLES/header');
         $this->load->view('Donor/SidebarDonor');
-		$this->load->view('Donor/Body/Dashboard');
+		$this->load->view('Donor/Body/Dashboard', $data);
 	} 
 }
 ?>

@@ -13,7 +13,7 @@ class Profile extends CI_Controller
             redirect(base_url());
         }
     }
-
+ 
     public function index()
 	{
 		$this->load->view('STYLES/header');;
@@ -24,4 +24,4 @@ class Profile extends CI_Controller
    
 
 }
-?>
+?> 
