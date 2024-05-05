@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class Donations extends CI_Controller
 {
     public function __construct()
@@ -18,16 +19,23 @@ class Donations extends CI_Controller
     {
         $user_id = $this->session->userdata('user')['user_id'];
 
-        
-        $data['donations'] = $this->DonationsHistoryModel->getDonorDonations($user_id);
+        $donor_id = $this->DonationsHistoryModel->getDonorIdFromUserId($user_id);
+
+        if ($donor_id) {
+            $data['donations'] = $this->DonationsHistoryModel->getDonorDonations($donor_id);
+        } else {
+            $data['donations'] = array();
+        }
 
         // Load views
-        $this->load->view('STYLES/header');
-        $this->load->view('Donor/SidebarDonor', $data);
-        $this->load->view('Donor/Body/Donations');
+        try {
+            $this->load->view('STYLES/header');
+            $this->load->view('Donor/SidebarDonor', $data);
+            $this->load->view('Donor/Body/Donations');
+        } catch (Exception $e) {
+            // Handle view loading errors
+            echo 'Error loading views: ' . $e->getMessage();
+        }
     }
-    
-
-
 }
 ?>

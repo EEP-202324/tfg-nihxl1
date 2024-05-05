@@ -19,22 +19,28 @@ class LoginController extends CI_Controller
 
         $email = $this->input->post('email');
         $password = $this->input->post('password');
+        
         if ($this->form_validation->run() == FALSE) {
             redirect(base_url().'welcome/index');
-
         } else {
             $result = $this->LogInModel->log($email, md5($password));
 
             if ($result) {
-                $row = $this->LogInModel->getUserData($email);
-                $this->session->set_userdata('user', $email);
-                $this->session->set_userdata('role_id', $row['role_id']);
+                
+                $user_data = $this->LogInModel->getUserData($email);
 
-                if ($row['role_id'] == '1') {
+                $this->session->set_userdata('user', array(
+                    'user_id' => $user_data['user_id'],
+                    'email' => $email,
+                    'role_id' => $user_data['role_id']
+                ));
+
+                // Redirect based on user role
+                if ($user_data['role_id'] == '1') {
                     redirect(base_url().'Admin/DashboardController');
-                } elseif ($row['role_id'] == '2') {
+                } elseif ($user_data['role_id'] == '2') {
                     redirect(base_url().'Donor/Dashboard');
-                } elseif ($row['role_id'] == '3') {
+                } elseif ($user_data['role_id'] == '3') {
                     redirect(base_url().'Patient/Dashboard');
                 } else {
                     redirect('Welcome');
@@ -51,4 +57,5 @@ class LoginController extends CI_Controller
         redirect(base_url());
     }
 }
+
 ?>

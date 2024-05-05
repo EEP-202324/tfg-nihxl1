@@ -20,5 +20,5 @@ class ProfileModel extends CI_Model
             return false;
         }
     }
-}
+} 
 ?>

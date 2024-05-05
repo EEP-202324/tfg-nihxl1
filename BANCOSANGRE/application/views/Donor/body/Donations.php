@@ -55,13 +55,4 @@ $(document).ready(function () {
 });
 </script>
 
-    
-<script>
-$(document).ready(function () {
-  $(".data-table").each(function (_, table) {
-    $(table).DataTable();
-  });
-});</script> 
-
-
 </div>
