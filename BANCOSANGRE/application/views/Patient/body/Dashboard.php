@@ -1,6 +1,7 @@
 <div class="main p-3">
+    <title>DASHBOARD</title>
     <div>
-        <h2 style="margin: 20px;">Bienvenido, .... !</h2>
+        <h2 style="margin: 20px;">Bienvenido, <?php echo $user_name; ?>!</h2>
     </div>
     <div class="container">
         <div class="row justify-content-center" style="margin-top: 50px;">
