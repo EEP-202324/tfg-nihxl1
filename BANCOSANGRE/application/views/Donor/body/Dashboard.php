@@ -15,7 +15,7 @@
         
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <a href="<?php echo base_url('Admin/BloodManagement/Donations');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
+                <a href="<?php echo base_url('Donor/Request');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
                     <div class="row g-0">
                         <div class="col-md-12 d-flex align-items-center justify-content-center">
                             <i class="bi bi-file-earmark-text" style="font-size: 3rem; color: #71091E;"></i>
@@ -24,33 +24,17 @@
                     <div class="row g-0">
                         <div class="col-md-12">
                             <div class="card-body text-center">
-                                <h5 class="card-title">HISTORIAL</h5>
+                                <h5 class="card-title">SOLICITUDES</h5>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="<?php echo base_url('Admin/BloodManagement/Transfusions');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
+                <a href="<?php echo base_url('Donor/Donations');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
                     <div class="row g-0">
                         <div class="col-md-12 d-flex align-items-center justify-content-center">
                             <i class="bi bi-calendar-check" style="font-size: 3rem; color: #71091E;"></i>
-                        </div>
-                    </div>
-                    <div class="row g-0">
-                        <div class="col-md-12">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">CITAS</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="<?php echo base_url('Admin/Requests');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
-                    <div class="row g-0">
-                        <div class="col-md-12 d-flex align-items-center justify-content-center">
-                            <i class="bi bi-check-all" style="font-size: 3rem; color: #71091E;"></i>
                         </div>
                     </div>
                     <div class="row g-0">
@@ -63,7 +47,23 @@
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="<?php echo base_url('Admin/Requests');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
+                <a href="<?php echo base_url('Donor/Quiz');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
+                    <div class="row g-0">
+                        <div class="col-md-12 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-check-all" style="font-size: 3rem; color: #71091E;"></i>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">QUIZ</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="<?php echo base_url('Donor/Profile');?>" class="card border-secondary mb-3 d-flex flex-column align-items-center justify-content-center" style="max-width: 16rem; height: 11rem; text-decoration: none;">
                     <div class="row g-0">
                         <div class="col-md-12 d-flex align-items-center justify-content-center">
                             <i class="bi bi-person-gear" style="font-size: 3rem; color: #71091E;"></i>
