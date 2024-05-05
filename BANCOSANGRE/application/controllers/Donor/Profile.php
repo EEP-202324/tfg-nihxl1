@@ -7,6 +7,7 @@ class Profile extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('Donor/ProfileSettingsModel'); 
 
         if(!$this->session->userdata('user'))
         {
@@ -16,12 +17,12 @@ class Profile extends CI_Controller
  
     public function index()
 	{
-		$this->load->view('STYLES/header');;
-        $this->load->view('Donor/SidebarDonor');
-		$this->load->view('Donor/Body/Profile');
+        $user_id = $this->session->userdata('user')['user_id'];
+        $data['user'] = $this->ProfileSettingsModel->getUserData($user_id); 
+
+		$this->load->view('STYLES/header');
+        $this->load->view('Donor/SidebarDonor', $data);
+		$this->load->view('Donor/Body/Profile', $data); 
 	} 
-
-   
-
 }
-?> 
+?>
