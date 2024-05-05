@@ -1,5 +1,5 @@
 <?php
-class NewsModel extends CI_Model
+class QuizModel extends CI_Model
 {
     function __construct()
     {

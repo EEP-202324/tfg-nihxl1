@@ -17,5 +17,12 @@ class ProfileSettingsModel extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+
+    public function updateUserData($user_id, $data)
+{
+    $this->db->where('user_id', $user_id);
+    $this->db->update('user', $data);
+}
+
 }
 ?>

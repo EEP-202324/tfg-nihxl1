@@ -38,6 +38,12 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
+                    <a href="<?php echo base_url('Donor/Request');?>" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Solicitudes</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a href="<?php echo base_url('Donor/Quiz');?>" class="sidebar-link">
                     <i class="bi bi-file-earmark-break"></i>
                         <span>Quiz</span>

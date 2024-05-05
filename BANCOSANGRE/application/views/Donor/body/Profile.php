@@ -43,9 +43,6 @@
               </tr>
             </tbody>
           </table>
-          <div class="text-end">
-            <button type="button" class="btn btn-primary me-2">Edit</button>
-          </div>
         </div>
       </div>
     </div>
@@ -76,10 +73,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="text-end">
-            <button type="button" class="btn btn-primary me-2">Edit</button>
-            <button type="button" class="btn btn-danger">Remove</button>
-          </div>
+          
         </div>
       </div>
     </div>
