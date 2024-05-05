@@ -20,7 +20,7 @@
                                         <th>Cantidad</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody> 
                                     <?php foreach ($donations as $donation): ?>
                                     <tr>
                                         <td><?php echo $donation->name . ' ' . $donation->lastname; ?></td>
