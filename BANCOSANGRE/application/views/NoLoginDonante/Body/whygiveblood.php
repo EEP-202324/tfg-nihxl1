@@ -1,4 +1,4 @@
-<!-- Main Content -->
+
 <div class="container mt-3">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -57,3 +57,19 @@
         </div>
     </div>
 </div>
+<style>
+    
+
+.btn {
+    background-color: #71091E;
+    color: white; 
+    border-color: #71091E; 
+}
+
+.btn:hover {
+    background-color: #5b0718; 
+    border-color: #5b0718;ç
+}
+
+
+</style>

@@ -19,6 +19,8 @@ class Welcome extends CI_Controller
 		
         $this->load->view('NoLoginDonante/navbar');
 		$this->load->view('NoLoginDonante/Body/welcome_message', $data); 
+        $this->load->view('NoLoginDonante/footer');
+
 	}  
 
 }

@@ -5,23 +5,14 @@
 <div class="d-flex justify-content-between align-items-center">
         <h2 style="margin: 20px;">ULTIMAS NOTICIAS</h2>
         <div class="d-flex">
-        <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-        <i class="bi bi-person-circle">Inicio de Sesión<noscript></noscript></i>     
+        <button type="button" class="btn btn border " data-bs-toggle="modal" data-bs-target="#exampleModal" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
+        <i class="bi bi-person-circle"><noscript></noscript></i>     
         </button>
-        <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-            <i class="bi bi-person-circle">Registro</i>     
+        <button type="button" class="btn btn border " data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
+            <i class="bi bi-person-circle"></i>     
         </button>
         </div>
     </div>
-
-<!-- <header class="bg text-white text-center p-4">
-    <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-        <i class="bi bi-person-circle">Inicio de Sesión<noscript></noscript></i>     
-    </button>
-    <button type="button" class="btn btn-primary border border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-        <i class="bi bi-person-circle">Registro</i>     
-    </button>
-</header> -->
 
 <style>
         header {
@@ -38,19 +29,22 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="<?php echo base_url('logincontroller/login'); ?>">
-                    <h1 class="h3 mb-3 fw-normal">LOG IN</h1>
+                    <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
+                    
                     <div class="form-floating">
                         <input type="email" class="form-control" id="modalFloatingInput" name="email"
-                            placeholder="name@example.com" value="">
+                            placeholder="nombre@ejemplo.com" value="">
                   
-                        <label for="modalFloatingInput">Email address</label>
+                        <label for="modalFloatingInput">Correo electrónico</label>
                     </div>
+                    <br>
                     <div class="form-floating">
                         <input type="password" class="form-control" id="modalFloatingPassword" name="password"
                             placeholder="Password">
-                        <label for="modalFloatingPassword">Password</label>
+                        <label for="modalFloatingPassword">Contraseña</label>
                     </div>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                    <br>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Inicio de sesión</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -69,7 +63,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form method="post" action="<?php echo base_url('Registro/guardar_registro'); ?>">
+            <form method="post" action="<?php echo base_url('RegistroController/guardar_registro'); ?>">
 
                     <div class="mb-3">
                         <label for="nameInput" class="form-label">Nombre</label>
@@ -81,7 +75,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="addressInput" class="form-label">Dirección</label>
-                        <input type="text" class="form-co+-ntrol" id="addressInput" name="direccion">
+                        <input type="text" class="form-control" id="addressInput" name="direccion">
                     </div>
                     <div class="mb-3">
                         <label for="birthdayInput" class="form-label">Fecha de Nacimiento</label>

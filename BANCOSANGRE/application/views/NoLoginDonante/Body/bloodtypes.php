@@ -10,7 +10,7 @@
             <ul>
                 <li>O positivo: 35%</li>
                 <li>O negativo: 13%</li>
-                <li>A positivo: 30%</li>
+                <li>A positivo: 30%</li> 
                 <li>A negativo: 8%</li>
                 <li>B positivo: 8%</li>
                 <li>B negativo: 2%</li>
