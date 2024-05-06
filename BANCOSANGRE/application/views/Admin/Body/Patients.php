@@ -48,7 +48,7 @@
                       <td><?php echo $patient->alergies; ?></td>
                       
                       <td>
-                        <button type="button" class="btn btn-primary border border-dark view-patient-btn"
+                        <button type="button" class="btn btn-primary btn-sm view-patient-btn"
                           data-bs-toggle="modal" data-bs-target="#viewPatientModal"
                           data-patient-id="<?php echo $patient->user_id; ?>">
                           <i class="bi bi-person-bounding-box"></i>
@@ -56,7 +56,7 @@
                       </td>
                       <!-- Edit patient button -->
                       <td>
-                        <button type="button" class="btn btn-primary border border-dark edit-patient-btn"
+                        <button type="button" class="btn btn-primary  btn-sm edit-patient-btn"
                           data-bs-toggle="modal" data-bs-target="#editPatientModal"
                           data-patient-id="<?php echo $patient->user_id; ?>">
                           <i class="bi bi-pencil-square"></i>

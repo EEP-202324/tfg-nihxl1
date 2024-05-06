@@ -9,26 +9,21 @@ class ProfileController extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('Admin/ProfileModel'); 
+        if(!$this->session->userdata('user'))
+        {
+            redirect(base_url());
+        }
     }
 
+
     public function index()
-    {
-        $userId = $this->session->userdata('user_id');
+	{
+        $user_id = $this->session->userdata('user')['user_id'];
+        $data['user'] = $this->ProfileModel->getUserData($user_id); 
 
-        $userData = $this->ProfileModel->getUserData($userId);
-
-        if (!$userData) {
-            echo "Error: No se encontraron los datos del usuario.";
-            return;
-        }
-        
-        $data['userData'] = $userData;
-
-        $this->load->view('STYLES/header');
-                $this->load->view('Admin/SidebarAdmin');
-                $this->load->view('Admin/Body/Profile', $data);
-                $this->load->view('Admin/FooterAdmin');
+		$this->load->view('STYLES/header');
+        $this->load->view('Admin/SidebarAdmin');
+        $this->load->view('Admin/Body/Profile', $data);
     }
 }
 ?>
-

@@ -16,16 +16,13 @@ class BloodManagementModel extends CI_Model {
     }
 
     public function get_patient_diseases_data() {
-        // Seleccionar el nombre de la enfermedad de la tabla de enfermedades para cada paciente
         $this->db->select('d.disease_name');
         $this->db->from('patient p');
         $this->db->join('diseases d', 'p.disease = d.disease_id');
         $query = $this->db->get();
 
-        // Contar cuántos pacientes tienen cada enfermedad
         $disease_counts = array_count_values(array_column($query->result_array(), 'disease_name'));
 
-        // Preparar los datos para el gráfico
         $labels = array_keys($disease_counts);
         $data = array_values($disease_counts);
 
@@ -33,7 +30,6 @@ class BloodManagementModel extends CI_Model {
     }
 
     
-// DonationsModel
     public function get_recent_donations_data() {
         $six_months_ago = date('Y-m-d', strtotime('-6 months'));
 
@@ -52,7 +48,6 @@ class BloodManagementModel extends CI_Model {
         return $query->result();
     }
 
-    // TransfusionsModel
     public function get_recent_transfusions_data() {
         $six_months_ago = date('Y-m-d', strtotime('-6 months'));
 

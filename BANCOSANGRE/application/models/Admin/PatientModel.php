@@ -8,7 +8,7 @@ class PatientModel extends CI_Model {
         $this->load->database();
         $this->load->library('session');
     }
-
+ 
     public function get_all_patients() {
         $this->db->select('user.*, patient.*');
         $this->db->from('user');
@@ -70,12 +70,13 @@ class PatientModel extends CI_Model {
         return ($this->db->affected_rows() > 0) ? true : false;
     }
 
-
     public function update_patient($patient_data) {
         $this->db->where('user_id', $patient_data['user_id']);
         $this->db->update('patient', $patient_data);
+    
         return ($this->db->affected_rows() > 0) ? true : false;
     }
+    
 
     function get_all_diseases() {
         $this->db->select('*');

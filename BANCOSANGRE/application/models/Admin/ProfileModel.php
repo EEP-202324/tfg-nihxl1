@@ -8,17 +8,16 @@ class ProfileModel extends CI_Model
         $this->load->library('session');
     }
 
-    public function getUserData($userId)
+    public function getUserData($user_id)
     {
-        $this->db->select('*');
-        $query = $this->db->get_where('user', array('user_id' => $userId));
-        $row = $query->row_array();
-
-        if ($query->num_rows() > 0) {
-            return $row;
-        } else {
-            return false;
-        }
+        $this->db->select('*'); 
+        $this->db->from('user');
+        // $this->db->join('admin', 'user.user_id = admin.user_id');
+        // $this->db->where('user.user_id', $user_id);
+        $query = $this->db->get();
+        return $query->row();
     }
-} 
+
+
+}
 ?>

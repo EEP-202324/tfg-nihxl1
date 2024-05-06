@@ -9,7 +9,7 @@ class Patients extends CI_Controller {
         $this->load->library('session');
         $this->load->model('Admin/PatientModel');
     }
-
+ 
     public function index() {
         $data['patients'] = $this->PatientModel->get_all_patients();
         $this->load->view('STYLES/header');
@@ -72,24 +72,23 @@ class Patients extends CI_Controller {
         }
     }
 
-
     public function update_patient() {
-        // Obtener datos del formulario
+        // Obtain data from the edit form
         $patient_data = array(
             'user_id' => $this->input->post('user_id'),
             'name' => $this->input->post('name'),
-            // Resto de los campos
+            // Include the rest of the fields here
         );
     
-        // Actualizar paciente en la base de datos
+        // Update patient data in the database
         $result = $this->PatientModel->update_patient($patient_data);
     
+        // Respond with JSON indicating success or failure
         if ($result) {
             echo json_encode(array("success" => true));
         } else {
             echo json_encode(array("success" => false));
         }
     }
-    
-}
+    }
 ?>

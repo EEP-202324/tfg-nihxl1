@@ -9,7 +9,7 @@ class Donors extends CI_Controller
         $this->load->library('session');
         $this->load->model('Admin/DonorModel');
     }
-
+ 
 
     public function index()
 	{
