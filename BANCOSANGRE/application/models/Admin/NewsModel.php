@@ -29,22 +29,31 @@ class NewsModel extends CI_Model
         return $query->result_array();
     }
 
-    // function deleteNewsById($id)
-    // {
-    // $this->db->where('newsID', $id);
-    // $this->db->delete('news');
-    // }
+
+    public function obtenerNoticias5()
+    {
+        $query = $this->db->query('SELECT * FROM news ORDER BY newsID DESC LIMIT 5');
+        return $query->result_array();
+    }
+
+
     function deleteNewsById($id)
     {
         $this->db->where('newsID', $id);
         $result = $this->db->delete('news');
     
         if ($result) {
-            return true; // Deletion successful
+            return true; 
         } else {
-            return false; // Deletion failed
+            return false; 
         }
     }
+
+
+
+    
+
+
     
 
 

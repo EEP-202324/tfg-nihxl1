@@ -13,7 +13,7 @@ class Welcome extends CI_Controller
     public function index()
 	{
 
-        $data['news'] = $this->NewsModel->obtenerNoticias();
+        $data['news'] = $this->NewsModel->obtenerNoticias5();
 		$this->load->view('STYLES/header');
         $this->load->view('NoLoginDonante/sidebarNoLogin');
 		

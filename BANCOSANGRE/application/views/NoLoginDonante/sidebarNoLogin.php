@@ -50,36 +50,18 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#cita" aria-expanded="false" aria-controls="auth">
-                        <i class="bi bi-droplet-half"></i>
+                    <a href="<?php echo base_url('NoLogin/Info/Process');?>" class="sidebar-link">
+                    <i class="bi bi-droplet-half"></i>
                         <span>El proceso de donación</span>
                     </a>
-                    <ul id="cita" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="<?php echo base_url('NoLogin/Info/Considerations');?>" class="sidebar-link">El proceso</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="<?php echo base_url('NoLogin/Info/Considerations');?>" class="sidebar-link">Agendar cita</a>
-                        </li>
-                    </ul>
                 </li>
-                
-
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#news" aria-expanded="false" aria-controls="auth">
-                        <i class="bi bi-droplet-half"></i>
+                    <a href="<?php echo base_url('NoLogin/Info/News');?>" class="sidebar-link">
+                    <i class="bi bi-droplet-half"></i>
                         <span>Noticias</span>
                     </a>
-                    </a>
-                    <ul id="news" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="<?php echo base_url('NoLogin/Info/News');?>" class="sidebar-link">Ver noticias</a>
-                        </li>
-                    </ul>
                 </li>
-                
+
             </ul>
         </aside>
 

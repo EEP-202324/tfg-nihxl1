@@ -69,6 +69,13 @@ class Info extends CI_Controller
 		$this->load->view('NoLoginDonante/Body/news',$data); 
 	}
 
+    public function Process()
+	{
+		$this->load->view('STYLES/header');
+        $this->load->view('NoLoginDonante/sidebarNoLogin');
+        $this->load->view('NoLoginDonante/navbar2');
+		$this->load->view('NoLoginDonante/Body/process'); 
+	}
 
 
 
