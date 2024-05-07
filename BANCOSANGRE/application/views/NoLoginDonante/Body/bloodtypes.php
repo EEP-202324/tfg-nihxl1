@@ -1,5 +1,5 @@
 <!-- Contenido Principal -->
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
             <h2 class="text-center mb-4">Tipos de Sangre</h2>
