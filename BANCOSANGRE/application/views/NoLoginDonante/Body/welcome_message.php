@@ -86,13 +86,14 @@
     margin-top: 5.9rem;
     position: fixed;
     top: 20px;
+    max-height: 350px;
     
-}
+    }
 
 @media (max-width: 767.98px) {
     .card-column-fixed {
         position: relative;
-        top: auto;
+        top: auto; 
     }
 }
 
