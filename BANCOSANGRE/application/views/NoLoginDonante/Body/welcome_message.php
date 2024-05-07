@@ -85,7 +85,8 @@
     .card-column-fixed {
     margin-top: 5.9rem;
     position: fixed;
-    top: 20px; 
+    top: 20px;
+    
 }
 
 @media (max-width: 767.98px) {
