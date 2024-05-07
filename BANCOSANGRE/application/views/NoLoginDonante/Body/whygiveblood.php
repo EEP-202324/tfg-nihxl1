@@ -39,19 +39,11 @@
                 <li>La donación real de sangre, que suele durar unos 10-15 minutos.</li>
                 <li>Refrigerio y descanso después de la donación.</li>
             </ol>
-            <h3>Imágenes y Gráficos:</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="imagen1.jpg" alt="Imagen 1" class="img-fluid mb-3">
-                </div>
-                <div class="col-md-6">
-                    <!-- Inserta aquí una gráfica o imagen relevante -->
-                </div>
-            </div>
+            
             <h3 class="mt-4">¡Únete a nosotros hoy!</h3>
             <p>Conviértete en un héroe anónimo y salva vidas donando sangre. Cada donación cuenta y puede marcar la diferencia entre la vida y la muerte para alguien en necesidad.</p>
             <div class="text-center">
-                <a href="#" class="btn btn-primary btn-lg">¡Haz tu donación hoy!</a>
+                <a href="#" class="btn btn-lg">¡Haz tu donación hoy!</a>
             </div>
             <p class="text-muted mt-3">Fuente: <a href="https://www.donarsangre.org/" target="_blank">Federación Española de Donantes de Sangre</a></p>
         </div>
@@ -59,7 +51,6 @@
 </div>
 <style>
     
-
 .btn {
     background-color: #71091E;
     color: white; 
@@ -70,6 +61,15 @@
     background-color: #5b0718; 
     border-color: #5b0718;ç
 }
+
+    .col-lg-8 {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+.container{
+    margin: 0;
+}    
 
 
 </style>

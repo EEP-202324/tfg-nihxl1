@@ -66,7 +66,31 @@
             <div class="text-center">
                 <a href="#" class="btn btn-primary btn-lg">¡Haz tu donación hoy!</a>
             </div>
-            <p class="text-muted mt-3">Fuente: <a href="#" target="_blank">Organización de Donación de Sangre</a></p>
         </div>
     </div>
 </div>
+
+<style>
+    
+.btn {
+    background-color: #71091E;
+    color: white; 
+    border-color: #71091E; 
+}
+
+.btn:hover {
+    background-color: #5b0718; 
+    border-color: #5b0718;ç
+}
+
+    .col-lg-8 {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+.container{
+    margin: 0;
+}    
+
+
+</style>

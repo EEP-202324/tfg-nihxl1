@@ -9,7 +9,7 @@
                 </div>
             </div>
             <ul class="sidebar-nav">
-                <li class="sidebar-item">
+                <li class="sidebar-item ">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="bi bi-droplet-half"></i>
@@ -17,26 +17,36 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('NoLogin/Basic/WhyGiveBlood');?>" class="sidebar-link">Ver todos</a>
+                            <a href="<?php echo base_url('NoLogin/Info/WhyGiveBlood');?>" class="sidebar-link">Porque donar</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Admin/Patients/addPatient');?>" class="sidebar-link">Añadir</a>
+                            <a href="<?php echo base_url('NoLogin/Info/BloodUsage');?>" class="sidebar-link">Empleo de la sangre</a>
                         </li>
                     </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="<?php echo base_url('NoLogin/Info/BloodTypes');?>" class="sidebar-link">
+                    <i class="bi bi-droplet-half"></i>
+                        <span>Tipos de sangre</span>
+                    </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#donor" aria-expanded="false" aria-controls="auth">
                         <i class="bi bi-droplet-half"></i>
-                        <span>Donantes</span>
+                        <span>Quien puede donar sangre</span>
                     </a>
                     <ul id="donor" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Admin/Donors');?>" class="sidebar-link">Ver todos</a>
+                            <a href="<?php echo base_url('NoLogin/Info/BloodDonation');?>" class="sidebar-link">¿Puedo donar?</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Admin/Donors/addDonor');?>" class="sidebar-link">Añadir</a>
+                            <a href="<?php echo base_url('NoLogin/Info/BloodTypes');?>" class="sidebar-link">Salud y aptitud</a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="<?php echo base_url('NoLogin/Info/BloodTypes');?>" class="sidebar-link">Consideraciones</a>
+                        </li>
+                        
                     </ul>
                 </li>
                 <li class="sidebar-item">
