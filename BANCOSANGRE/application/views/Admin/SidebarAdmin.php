@@ -101,12 +101,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
-                    <a href="<?php echo base_url('Admin/Settings');?>" class="sidebar-link">
-                        <i class="lni lni-cog"></i>
-                        <span>Setting</span>
-                    </a>
-                </li>
+                
             </ul>
             <div class="sidebar-footer">
                 <a href="<?php echo base_url('LoginController/logout');?>" class="sidebar-link">

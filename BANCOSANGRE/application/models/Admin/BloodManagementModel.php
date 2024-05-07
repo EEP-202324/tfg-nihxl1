@@ -76,7 +76,7 @@ class BloodManagementModel extends CI_Model {
                     ELSE '>65'
                 END AS age_group,
                 COUNT(*) AS donor_count
-            FROM 
+            FROM  
                 donor d
             JOIN 
                 user u ON d.user_id = u.user_id

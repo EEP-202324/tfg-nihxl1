@@ -361,3 +361,75 @@ const actions = [{
     }
 ];
 </script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var donorAgeData = <?php echo json_encode($donor_age_distribution); ?>;
+
+    var labels = [];
+    var data = [];
+    var backgroundColor = [];
+    var borderColor = []; // New array to hold border colors
+
+    donorAgeData.forEach(function (item) {
+        labels.push(item.age_group);
+        data.push(item.donor_count);
+        backgroundColor.push(getBackgroundColor(item.age_group));
+        borderColor.push(getBorderColor(item.age_group)); // Populate border colors
+    });
+
+    const config = {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Donor Age Distribution',
+                data: data,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor, 
+                borderWidth: 1, 
+                hoverOffset: 4
+            }]
+        }
+    };
+
+    var ctx = document.getElementById('myChart5').getContext('2d');
+    var myChart = new Chart(ctx, config);
+});
+
+function getBackgroundColor(ageGroup) {
+    switch (ageGroup) {
+        case '<18':
+            return 'rgba(255, 99, 132, 0.2)';
+        case '18-25':
+            return 'rgba(255, 159, 64, 0.2)';
+        case '26-40':
+            return 'rgba(255, 205, 86, 0.2)';
+        case '41-65':
+            return 'rgba(75, 192, 192, 0.2)';
+        case '>65':
+            return 'rgba(54, 162, 235, 0.2)';
+        default:
+            return 'rgb(201, 203, 207)';
+    }
+}
+
+function getBorderColor(ageGroup) {
+    switch (ageGroup) {
+        case '<18':
+            return 'rgb(255, 99, 132)';
+        case '18-25':
+            return 'rgb(255, 159, 64)';
+        case '26-40':
+            return 'rgb(255, 205, 86)';
+        case '41-65':
+            return 'rgb(75, 192, 192)';
+        case '>65':
+            return 'rgb(54, 162, 235)';
+        default:
+            return 'rgb(201, 203, 207)';
+    }
+}
+</script>
+
