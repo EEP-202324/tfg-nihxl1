@@ -36,7 +36,7 @@
                     <div class="col-sm-4 mb-3 mb-sm-0">
                         <div class="card h-100 d-flex align-items-center justify-content-center">
                             <div class="card-body text-center">
-                                <canvas id="myChart5" style="width: 100%; height: 100%;"></canvas>
+                                <canvas id="myChart5" style="width: 100%; height: 250%;"></canvas>
                             </div>
                         </div>
                     </div>
@@ -175,58 +175,57 @@
 
 const myChart = new Chart(ctx, config);
 
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('myChart2').getContext('2d');
+    const donations = <?php echo json_encode($recent_donations); ?>;
+    const transfusions = <?php echo json_encode($recent_transfusions); ?>;
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('myChart2').getContext('2d');
-        const donations = <?php echo json_encode($recent_donations); ?>;
-        const transfusions = <?php echo json_encode($recent_transfusions); ?>;
+    const labels = [''];
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Donaciones',
+                data: donations.map(item => item.count),
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderWidth: 2,
+            },
+            {
+                label: 'Transfusiones',
+                data: transfusions.map(item => item.count),
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderWidth: 2,
+            }
+        ]
+    };
 
-        const labels = [''];
-        const data = {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Donaciones',
-                    data: donations.map(item => item.count),
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            indexAxis: 'y',
+            elements: {
+                bar: {
                     borderWidth: 2,
-                },
-                {
-                    label: 'Transfusiones',
-                    data: transfusions.map(item => item.count),
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderWidth: 2,
-                }
-            ]
-        };
-
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                indexAxis: 'y',
-                elements: {
-                    bar: {
-                        borderWidth: 2,
-                    }
-                },
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Donaciones/Transfusiones en los últimos 6 meses'
-                    }
                 }
             },
-        };
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Donaciones/Transfusiones en los últimos 6 meses'
+                }
+            }
+        },
+    };
 
-        const myChart2 = new Chart(ctx, config);
-    });
+    const myChart2 = new Chart(ctx, config);
+});
 
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -370,13 +369,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var labels = [];
     var data = [];
     var backgroundColor = [];
-    var borderColor = []; // New array to hold border colors
+    var borderColor = []; 
 
     donorAgeData.forEach(function (item) {
         labels.push(item.age_group);
         data.push(item.donor_count);
         backgroundColor.push(getBackgroundColor(item.age_group));
-        borderColor.push(getBorderColor(item.age_group)); // Populate border colors
+        borderColor.push(getBorderColor(item.age_group)); 
     });
 
     const config = {
@@ -384,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Donor Age Distribution',
+                label: 'Edades/donate',
                 data: data,
                 backgroundColor: backgroundColor,
                 borderColor: borderColor, 
