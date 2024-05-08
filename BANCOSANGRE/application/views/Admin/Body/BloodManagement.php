@@ -46,15 +46,18 @@
                 <div class="card border-secondary mb-3 h-100" style="max-width: 200rem;" >
                     <div class="card-body text-secondary text-center d-flex flex-column justify-content-center" style="height: 100%;" style="top-margin: 0.5cm">
                         
-                        <div class="card h-90" id="aviso" style="bottom-margin: 4.5cm">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                AVISO
-                            </div>
-                            <div class="card-body">
-                                dfgdg
-                            </div>
-                        </div> 
+                    <div class="card h-90" id="aviso" style="bottom-margin: 4.5cm">
+                        <div class="card-header">
+                            <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+                            AVISO
+                        </div>
+                        <div class="card-body">
+                            Tipo de sangre más bajo: <?php echo $lowest_blood_type['type']; ?> <?php echo $lowest_blood_type['rh_factor']; ?>
+                         
+                            <button type="submit" class="btn btn-primary" id="red">Mandar correo donantes</button>
+                        </div>
+                    </div>
+
                         
                         <canvas id="myChart" style="max-height: 100%;"></canvas>
                     </div>
@@ -83,6 +86,7 @@
                         <div class="col-md-2 d-flex align-items-center justify-content-center">
                             <i class="bi bi-droplet" style="font-size: 2rem;"></i>
                         </div>
+                        <br>
                         <div class="col-md-10">
                             <div class="card-body">
                             <a href="<?php echo base_url('Admin/BloodManagement/Donations');?>"  class="card-title">VER DONACIONES</a>
@@ -124,6 +128,13 @@
         color: #71091E;
         background-color: #eef0f1;
     }
+
+    #red{
+    background-color: #71091E;
+    color: white; 
+    border-color: #71091E; 
+
+}
 </style>
 
 <script>
