@@ -4,7 +4,7 @@ class Donors extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct(); 
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('Admin/DonorModel');
@@ -77,23 +77,41 @@ class Donors extends CI_Controller
         }
     }
 
-
     public function update_donor() {
-        // Obtener datos del formulario
+        // Get the form data
         $donor_data = array(
             'user_id' => $this->input->post('user_id'),
             'name' => $this->input->post('name'),
-            // Resto de los campos
+            'lastname' => $this->input->post('lastname'),
+            'birthday' => $this->input->post('birthday'),
+            'address' => $this->input->post('address'),
+            'phone' => $this->input->post('phone'),
+            'email' => $this->input->post('email'),
+            'age' => $this->input->post('age'),
+            'gender' => $this->input->post('gender'),
+            'blood_type' => $this->input->post('bloodType'),
+            'disease' => $this->input->post('disease'),
+            'alergies' => $this->input->post('alergies'),
+            'donation_count' => $this->input->post('donationCount'),
+            'last_donation_date' => $this->input->post('lastDonation')
         );
     
-        // Actualizar paciente en la base de datos
-        $result = $this->DonorModel->update_donor($donor_data);
-    
-        if ($result) {
-            echo json_encode(array("success" => true));
-        } else {
-            echo json_encode(array("success" => false));
-        }
+        // Update the donor in the database
+         // Debugging: Output received form data
+    var_dump($donor_data);
+
+    // Update the donor in the database
+    $result = $this->DonorModel->update_donor($donor_data);
+
+    // Debugging: Output update result
+    var_dump($result);
+
+    // Send the response back to the client
+    if ($result) {
+        echo json_encode(array("success" => true));
+    } else {
+        echo json_encode(array("success" => false));
     }
-}
+    
+    }}
 ?>

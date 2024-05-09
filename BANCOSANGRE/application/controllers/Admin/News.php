@@ -40,14 +40,6 @@ class News extends CI_Controller
         }
     }
 
-    // public function deleteNews()
-    // {
-    //     $id = $this->input->post('newsID'); 
-    
-    //     $this->NewsModel->deleteNewsById($id); 
-    
-    //     echo json_encode(['success' => true]);
-    // }
     
     public function deleteNews()
     {

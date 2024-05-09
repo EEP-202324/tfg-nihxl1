@@ -43,8 +43,10 @@
             <h3 class="mt-4">¡Únete a nosotros hoy!</h3>
             <p>Conviértete en un héroe anónimo y salva vidas donando sangre. Cada donación cuenta y puede marcar la diferencia entre la vida y la muerte para alguien en necesidad.</p>
             <div class="text-center">
-                <a href="#" class="btn btn-lg">¡Haz tu donación hoy!</a>
-            </div>
+                <button type="button" class="btn btn border text-center" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;;">
+                           ¡Haz tu donación hoy!
+                </button>
+                </div> 
             <p class="text-muted mt-3">Fuente: <a href="https://www.donarsangre.org/" target="_blank">Federación Española de Donantes de Sangre</a></p>
         </div>
     </div>

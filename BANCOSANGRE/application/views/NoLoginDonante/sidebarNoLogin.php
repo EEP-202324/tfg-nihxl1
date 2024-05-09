@@ -61,6 +61,13 @@
                         <span>Noticias</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="<?php echo base_url('NoLogin/Info/Quiz');?>" class="sidebar-link">
+                    <i class="bi bi-droplet-half"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
 
             </ul>
         </aside>

@@ -43,8 +43,10 @@
                 <h3>¡Gracias por Donar!</h3>
                 <p>Con tu donación de sangre, estás ayudando a salvar vidas y hacer una diferencia significativa en la comunidad. ¡Gracias por tu generosidad y dedicación!</p>
                 <div class="text-center">
-                    <a href="#" class="btn btn-primary btn-lg">Encuentra un Centro de Donación</a>
-                </div>
+                <button type="button" class="btn btn border text-center" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;;">
+                           ¡Haz tu donación hoy!
+                </button>
+                </div> 
             </div>
         </div>
     </div>

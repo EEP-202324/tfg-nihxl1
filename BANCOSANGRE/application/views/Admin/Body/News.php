@@ -113,7 +113,7 @@
     $(document).ready(function(){
         $(".delete-news-btn").click(function(){
             var newsID = $(this).data("news-id");
-            if(confirm("Are you sure you want to delete this news?")){
+            if(confirm("¿Está seguro de que quiere borrar la noticia? ")){
                 $.ajax({
                     url: "<?php echo base_url('Admin/News/deleteNews'); ?>",
                     type: "POST",
@@ -123,7 +123,7 @@
                         if(data.success){
                             location.reload();
                         } else {
-                            alert("Failed to delete news.");
+                            alert("Fallo al borrar");
                         }
                     }
                 });

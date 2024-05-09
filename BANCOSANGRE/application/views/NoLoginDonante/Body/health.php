@@ -70,8 +70,10 @@
                 <h3>¿Listo para Donar?</h3>
                 <p>Si cumples con los requisitos de salud y criterios de elegibilidad, considera donar sangre hoy mismo para ayudar a salvar vidas en tu comunidad. ¡Tu contribución puede marcar una diferencia significativa!</p>
                 <div class="text-center">
-                    <a href="#" class="btn btn-primary btn-lg">Donar Sangre Ahora</a>
-                </div>
+                <button type="button" class="btn btn border text-center" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;;">
+                           ¡Haz tu donación hoy!
+                </button>
+                </div> 
             </div>
         </div>
     </div>

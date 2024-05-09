@@ -96,8 +96,10 @@
                 <h3>Conoce tu tipo de sangre y salva vidas</h3>
                 <p>Conocer tu tipo de sangre puede marcar la diferencia en situaciones de emergencia. Únete a nosotros hoy y conviértete en un héroe anónimo donando sangre.</p>
                 <div class="text-center">
-                    <a href="#" class="btn btn-primary btn-lg">¡Haz tu donación hoy!</a>
-                </div>
+                <button type="button" class="btn btn border text-center" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;;">
+                           ¡Haz tu donación hoy!
+                </button>
+                </div> 
             </div>
         </div>
     </div>

@@ -20,10 +20,10 @@
                     <th>Dirección</th>
                     <th>Telefono</th>
                     <th>Email</th>
-                    <th>Age</th>
-                    <th>Gender</th>
+                    <!-- <th>Age</th> -->
+                    <th>Sexo</th>
                     <th>Sangre</th>
-                    <th>Enfermedades</th>
+                    <!-- <th>Enfermedades</th> -->
                     <th>Alergias</th>
                     <th>Nº de donaciones</th>
                     <th>Última vez</th>
@@ -44,13 +44,13 @@
                       <td><?php echo $donor->age; ?></td>
                       <td><?php echo $donor->gender; ?></td>
                       <td><?php echo $donor->blood_type; ?></td>
-                      <td><?php echo $donor->disease; ?></td>
+                      <!-- <td><?php echo $donor->disease; ?></td> -->
                       <td><?php echo $donor->alergies; ?></td>
                       <td><?php echo $donor->donation_count; ?></td>
                       <td><?php echo $donor->last_donation_date; ?></td>
                       
                       <td>
-                        <button type="button" class="btn btn-primary border border-dark view-donor-btn"
+                        <button type="button" class="btn btn-primary border btn-sm view-donor-btn"
                           data-bs-toggle="modal" data-bs-target="#viewDonorModal"
                           data-donor-id="<?php echo $donor->user_id; ?>">
                           <i class="bi bi-person-bounding-box"></i>
@@ -58,7 +58,7 @@
                       </td>
                       <!-- Edit donor button -->
                       <td>
-                        <button type="button" class="btn btn-primary border border-dark edit-donor-btn"
+                        <button type="button" class="btn btn-primary border btn-sm edit-donor-btn"
                           data-bs-toggle="modal" data-bs-target="#editDonorModal"
                           data-donor-id="<?php echo $donor->user_id; ?>">
                           <i class="bi bi-pencil-square"></i>
@@ -82,10 +82,10 @@
                     <th>Dirección</th>
                     <th>Telefono</th>
                     <th>Email</th>
-                    <th>Age</th>
-                    <th>Gender</th>
+                    <!-- <th>Age</th> -->
+                    <th>Sexo</th>
                     <th>Sangre</th>
-                    <th>Enfermedades</th>
+                    <!-- <th>Enfermedades</th> -->
                     <th>Alergias</th>
                     <th>Nº de donaciones</th>
                     <th>Última vez</th>
@@ -241,7 +241,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $(".edit-donor-btn").click(function() {
     var donorId = $(this).data('donorId');
-    $.ajax({
+    $.ajax({ 
       url: "<?php echo base_url('Admin/Donors/get_donor/'); ?>" + donorId,
       type: "GET",
       dataType: "json",
@@ -252,6 +252,33 @@ $(document).ready(function() {
         });
 
         $("#edit-DonorModal").modal('show');
+
+        // Add a submit event listener to the form
+        $("#editDonorForm").off("submit").on("submit", function(event) {
+          event.preventDefault(); // Prevent default form submission
+          var formData = $(this).serialize(); // Serialize form data
+
+          // Send the form data to the server
+          $.ajax({
+            url: "<?php echo base_url('Admin/Donors/update_donor'); ?>",
+            type: "POST",
+            data: formData,
+            dataType: "json",
+            success: function(response) {
+              if (response.success) {
+                // If the update was successful, close the modal and reload the page
+                $("#editDonorModal").modal('hide');
+                location.reload();
+              } else {
+                // If the update failed, display an error message
+                alert('Failed to update donor.');
+              }
+            },
+            error: function(xhr, status, error) {
+              console.error('Error:', error);
+            }
+          });
+        });
       },
       error: function(xhr, status, error) {
         console.error('Error:', error);
@@ -260,7 +287,7 @@ $(document).ready(function() {
   });
 });
 
- 
+
 
 
 

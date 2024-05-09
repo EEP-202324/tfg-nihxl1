@@ -102,7 +102,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="ageInput" class="form-label">Edad</label>
-                        <input type="age" class="form-control" id="ageInput" name="age">
+                        <input type="number" class="form-control" id="ageInput" name="age">
+
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>
@@ -112,6 +113,21 @@
 </div>
 
 
+<?php if ($this->session->flashdata('success')): ?>
+    <div class="alert alert-success">
+        <?php echo $this->session->flashdata('success'); ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?php echo $this->session->flashdata('error'); ?>
+    </div>
+<?php endif; ?>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 
 <script type="text/javascript">
     $(function () {

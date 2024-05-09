@@ -38,13 +38,18 @@ class RegistroController extends CI_Controller {
 
         if ($this->RegistroModel->guardar_usuario($datosForm)) {
             $this->session->set_flashdata('success', 'Registro correcto');
-            echo "<script>alert('Registro correcto. \n Inicie sesión, por favor.');</script>";
+            echo "<script>alert('Registro correcto.');</script>";
+            
+
             redirect(base_url().'Welcome/index'); 
         } else {
             $this->session->set_flashdata('error', 'Registro incorrecto');
             echo "<script>alert('Registro incorrecto \n Vuelva a intentarlo, por favor.');</script>";
             redirect(base_url().'Welcome/index'); 
         }
+        
+
+
         
     } 
 }

@@ -7,7 +7,7 @@ class Patients extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
-        $this->load->model('Admin/PatientModel');
+        $this->load->model('Admin/PatientModel'); 
     }
  
     public function index() {

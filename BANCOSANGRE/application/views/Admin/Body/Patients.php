@@ -21,10 +21,10 @@
                     <th>Dirección</th>
                     <th>Telefono</th>
                     <th>Email</th>
-                    <th>Age</th>
-                    <th>Gender</th>
+                    <!-- <th>Age</th> -->
+                    <th>Sexo</th>
                     <th>Sangre</th>
-                    <th>Enfermedades</th>
+                    <!-- <th>Enfermedades</th> -->
                     <th>Alergias</th>
                     <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
                     <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
@@ -41,10 +41,10 @@
                       <td><?php echo $patient->address; ?></td>
                       <td><?php echo $patient->phone; ?></td>
                       <td><?php echo $patient->email; ?></td>
-                      <td><?php echo $patient->age; ?></td>
+                      <!-- <td><?php echo $patient->age; ?></td> -->
                       <td><?php echo $patient->gender; ?></td>
                       <td><?php echo $patient->blood_type; ?></td>
-                      <td><?php echo $patient->disease; ?></td>
+                      <!-- <td><?php echo $patient->disease; ?></td> -->
                       <td><?php echo $patient->alergies; ?></td>
                       
                       <td>
@@ -78,12 +78,12 @@
                     <th>Apellido</th>
                     <th>Cumpleaños</th>
                     <th>Dirección</th>
-                    <th>Telefono</th>
+                    <th>Telefono</th> 
                     <th>Email</th>
-                    <th>Age</th>
-                    <th>Gender</th>
+                    <!-- <th></th> -->
+                    <th>Sexo</th>
                     <th>Sangre</th>
-                    <th>Enfermedades</th>
+                    <!-- <th>Enfermedades</th> -->
                     <th>Alergias</th>
                     <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
                     <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
