@@ -60,8 +60,10 @@
                 <h3>¡Únete a Nosotros y Haz tu Donación Hoy!</h3>
                 <p>Si cumples con los requisitos necesarios, te invitamos a unirte a nosotros y hacer tu donación de sangre hoy mismo. ¡Tu sangre puede salvar vidas!</p>
                 <div class="text-center">
-                    <a href="#" class="btn btn-primary btn-lg">¡Haz tu donación hoy!</a>
-                </div>
+                <button type="button" class="btn btn border text-center" data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;;">
+                           ¡Haz tu donación hoy!
+                </button>
+                </div> 
             </div>
         </div>
     </div>

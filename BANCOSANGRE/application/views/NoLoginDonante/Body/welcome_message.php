@@ -59,9 +59,10 @@
                 <div class="card" id="card-red">
                     <div class="card-body">
                         Tipo de sangre más bajo: <?php echo $lowest_blood_type['type']; ?> <?php echo $lowest_blood_type['rh_factor']; ?>
-
                         <ul class="list-group">
-                            <li class="list-group-item">AYUDA AQUÍ!</li>
+                        <button type="button" class="btn btn border " data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: white; ;">
+                            <i class="bi bi-drop" id="red">AYUDA AQUÍ </i>    
+                        </button>
                         </ul>
                     </div>
                 </div>
@@ -102,6 +103,13 @@
     background-color: #71091E;
     color: white; 
     border-color: #71091E; 
+
+}
+
+
+#red{
+    color: #71091E; 
+     
 
 }
 .btn {
