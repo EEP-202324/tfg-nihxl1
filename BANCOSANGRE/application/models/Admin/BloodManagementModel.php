@@ -62,8 +62,7 @@ class BloodManagementModel extends CI_Model {
             GROUP BY
                 MONTH(donation_date)
         ");
-
-        
+                
 
         return $query->result();
     }

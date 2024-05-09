@@ -55,10 +55,11 @@ class News extends CI_Controller
     
         if (!empty($id)) {
             if ($this->NewsModel->deleteNewsById($id)) {
-                echo json_encode(['success' => false]);
+                echo json_encode(['success' => true]);
+
             } else {
                 
-                echo json_encode(['success' => true]);
+                echo json_encode(['success' => false]);
             }
         } else {
             echo json_encode(['success' => false]);

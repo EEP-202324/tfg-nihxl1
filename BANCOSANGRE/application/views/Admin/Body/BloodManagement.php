@@ -54,13 +54,10 @@
                         <div class="card-body">
                             Tipo de sangre más bajo: <?php echo $lowest_blood_type['type']; ?> <?php echo $lowest_blood_type['rh_factor']; ?>
                          
-                            <!-- <form action="<?php echo base_url('Admin/Email/index'); ?>" method="post">
+                            <form action="<?php echo base_url('Admin/Email/index'); ?>" method="post">
                                 <button class="btn btn-primary" type="submit" id="red">Envié emails</button>
-                            </form> -->
-                            <form action="<?php echo base_url('EmailController/index'); ?>" method="post">
-                                <button class="btn btn-primary" type="submit" id="red">Enviar emails</button>
                             </form>
-
+                    
                         </div>
                     </div>
 

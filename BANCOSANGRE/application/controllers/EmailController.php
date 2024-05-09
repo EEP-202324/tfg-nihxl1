@@ -4,12 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'path/to/PHPMailer/src/Exception.php';
-require 'path/to/PHPMailer/src/PHPMailer.php';
-require 'path/to/PHPMailer/src/SMTP.php';
-// require 'third_party/PHPMailer/src/Exception.php';
-// require 'third_party/PHPMailer/src/PHPMailer.php';
-// require 'third_party/PHPMailer/src/SMTP.php';
+// require 'path/to/PHPMailer/src/Exception.php';
+// require 'path/to/PHPMailer/src/PHPMailer.php';
+// require 'path/to/PHPMailer/src/SMTP.php';
+require 'third_party/PHPMailer/src/Exception.php';
+require 'third_party/PHPMailer/src/PHPMailer.php';
+require 'third_party/PHPMailer/src/SMTP.php';
 
 
 class EmailController extends CI_Controller
@@ -43,11 +43,10 @@ class EmailController extends CI_Controller
 {
     $lowest_blood_type = $this->BloodManagementModel->get_lowest_blood_type();
 
-    // Retrieve donors by the lowest blood type
     $donors = $this->BloodManagementModel->get_donors_by_blood_type($lowest_blood_type['type'], $lowest_blood_type['rh_factor']);
 
-    // Subject and body content for the email
     $subject = "URGENTE! DONAR ES VIDA";
+
     $body = "
     Estimado/a donante,
 
@@ -71,7 +70,7 @@ class EmailController extends CI_Controller
         $this->sendEmail($donor['email'], $subject, $body);
     }
 
-    echo "Emails sent successfully.";
+    echo "Los emails han sido enviados";
 }
 
     
