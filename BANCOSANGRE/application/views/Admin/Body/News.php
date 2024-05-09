@@ -13,7 +13,7 @@
     <div class="col-md-12 mb-4">
         <div class="card">
             <div class="position-relative">
-                <div class="card-body">
+                <div class="card-body"> 
                     <div class="row">
                         <div class="col-md-<?php echo !empty($item['multimedia']) ? '8' : '12'; ?>">
                             <h5 class="card-title"><?php echo $item['name']; ?></h5>
@@ -104,6 +104,8 @@
         background-color: #71091E;
     }
 </style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 
 
 

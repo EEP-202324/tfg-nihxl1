@@ -22,7 +22,7 @@ class NewsModel extends CI_Model
         $this->db->insert('news', $data);
         return $this->db->insert_id(); 
     }
-
+ 
     function obtenerNoticias()
     {
         $query = $this->db->get('news');
