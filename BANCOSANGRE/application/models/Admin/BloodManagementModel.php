@@ -28,44 +28,75 @@ class BloodManagementModel extends CI_Model {
 
         return array('labels' => $labels, 'data' => $data);
     }
-
     
     public function get_recent_transfusions_data() {
         $six_months_ago = date('Y-m-d', strtotime('-6 months'));
     
         $query = $this->db->query("
             SELECT 
-                MONTH(transfusion_date) AS month,
                 COUNT(*) AS count
             FROM 
                 transfusions
             WHERE 
                 transfusion_date >= '$six_months_ago'
-            GROUP BY 
-                MONTH(transfusion_date)
         ");
     
-        return $query->result();
+        $result = $query->row();
+        return $result->count;
     }
     
+
     public function get_recent_donations_data() {
         $six_months_ago = date('Y-m-d', strtotime('-6 months'));
     
         $query = $this->db->query("
             SELECT 
-                MONTH(donation_date) AS month,
                 COUNT(*) AS count
             FROM 
                 donation
             WHERE 
                 donation_date >= '$six_months_ago'
-            GROUP BY
-                MONTH(donation_date)
         ");
-                
-
-        return $query->result();
+    
+        $result = $query->row();
+        return $result->count;
     }
+    
+    
+    // public function get_recent_transfusions_data() {
+    //     $six_months_ago = date('Y-m-d', strtotime('-6 months'));
+    
+    //     $query = $this->db->query("
+    //         SELECT 
+    //             MONTH(transfusion_date) AS month,
+    //             COUNT(*) AS count
+    //         FROM 
+    //             transfusions
+    //         WHERE 
+    //             transfusion_date >= '$six_months_ago'
+    //         GROUP BY 
+    //             MONTH(transfusion_date)
+    //     ");
+    
+    //     return $query->result();
+    // }
+    
+    // public function get_recent_donations_data() {
+    //     $six_months_ago = date('Y-m-d', strtotime('-6 months'));
+    
+    //     $query = $this->db->query("
+    //         SELECT 
+    //             COUNT(*) AS count
+    //         FROM 
+    //             donation
+    //         WHERE 
+    //             donation_date >= '$six_months_ago'
+    //     ");
+    
+    //     $result = $query->row();
+    //     return $result->count;
+    // }
+    
     
     public function get_donor_age_distribution() {
         $query = $this->db->query("
@@ -120,6 +151,6 @@ class BloodManagementModel extends CI_Model {
         return $query->result_array();
     }
     
-
+ 
 }
 ?>

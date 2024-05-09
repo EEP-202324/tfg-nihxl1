@@ -191,8 +191,10 @@ const myChart = new Chart(ctx, config);
 
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('myChart2').getContext('2d');
-    const donations = <?php echo json_encode($recent_donations); ?>;
-    const transfusions = <?php echo json_encode($recent_transfusions); ?>;
+    // const donations = <?php echo json_encode($recent_donations); ?>;
+    // const transfusions = <?php echo json_encode($recent_transfusions); ?>;
+    const totalDonations = <?php echo $recent_donations; ?>;
+    const totalTransfusions = <?php echo $recent_transfusions; ?>;
 
     const labels = [''];
     const data = {
@@ -200,14 +202,14 @@ document.addEventListener('DOMContentLoaded', function() {
         datasets: [
             {
                 label: 'Donaciones',
-                data: donations.map(item => item.count),
+                data: [totalDonations],
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderWidth: 2,
             },
             {
                 label: 'Transfusiones',
-                data: transfusions.map(item => item.count),
+                data: [totalTransfusions],
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderWidth: 2,
@@ -240,6 +242,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const myChart2 = new Chart(ctx, config);
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const ctx = document.getElementById('myChart2').getContext('2d');
+//     const donations = <?php echo json_encode($recent_donations); ?>;
+//     const transfusions = <?php echo json_encode($recent_transfusions); ?>;
+
+//     const labels = [''];
+//     const data = {
+//         labels: labels,
+//         datasets: [
+//             {
+//                 label: 'Donaciones',
+//                 data: donations.map(item => item.count),
+//                 borderColor: 'rgba(54, 162, 235, 1)',
+//                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
+//                 borderWidth: 2,
+//             },
+//             {
+//                 label: 'Transfusiones',
+//                 data: transfusions.map(item => item.count),
+//                 borderColor: 'rgba(255, 99, 132, 1)',
+//                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
+//                 borderWidth: 2,
+//             }
+//         ]
+//     };
+
+//     const config = {
+//         type: 'bar',
+//         data: data,
+//         options: {
+//             indexAxis: 'y',
+//             elements: {
+//                 bar: {
+//                     borderWidth: 2,
+//                 }
+//             },
+//             responsive: true,
+//             plugins: {
+//                 legend: {
+//                     position: 'bottom',
+//                 },
+//                 title: {
+//                     display: true,
+//                     text: 'Donaciones/Transfusiones en los últimos 6 meses'
+//                 }
+//             }
+//         },
+//     };
+
+//     const myChart2 = new Chart(ctx, config);
+// });
 
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -393,19 +447,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const config = {
-        type: 'pie',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Edades/donate',
-                data: data,
-                backgroundColor: backgroundColor,
-                borderColor: borderColor, 
-                borderWidth: 1, 
-                hoverOffset: 4
-            }]
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Edades/donate',
+            data: data,
+            backgroundColor: backgroundColor,
+            borderColor: borderColor, 
+            borderWidth: 1, 
+            hoverOffset: 4
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Donor Age Distribution', 
+                // font: {
+                //     size: 18, // Adjust font size as needed
+                //     weight: 'bold' // Adjust font weight as needed
+                // }
+            },
+            legend: {
+                position: 'bottom',
+            }
+        },
+        layout: {
+            padding: {
+                bottom: 01  // Adjust as needed to ensure space for labels at the bottom
+            }
         }
-    };
+    }
+};
+
+
+
 
     var ctx = document.getElementById('myChart5').getContext('2d');
     var myChart = new Chart(ctx, config);
@@ -446,3 +523,59 @@ function getBorderColor(ageGroup) {
 }
 </script>
 
+<script>
+//     document.addEventListener('DOMContentLoaded', function() {
+//     const ctx = document.getElementById('myChart2').getContext('2d');
+//     // const donations = <?php echo json_encode($recent_donations); ?>;
+//     // const transfusions = <?php echo json_encode($recent_transfusions); ?>;
+//     const totalDonations = <?php echo $recent_donations; ?>;
+//     const totalTransfusions = <?php echo $recent_transfusions; ?>;
+
+//     const labels = [''];
+//     const data = {
+//         labels: labels,
+//         datasets: [
+//             {
+//                 label: 'Donaciones',
+//                 data: [totalDonations],
+//                 borderColor: 'rgba(54, 162, 235, 1)',
+//                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
+//                 borderWidth: 2,
+//             },
+//             {
+//                 label: 'Transfusiones',
+//                 data: [totalTransfusions],
+//                 borderColor: 'rgba(255, 99, 132, 1)',
+//                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
+//                 borderWidth: 2,
+//             }
+//         ]
+//     };
+
+//     const config = {
+//         type: 'bar',
+//         data: data,
+//         options: {
+//             indexAxis: 'y',
+//             elements: {
+//                 bar: {
+//                     borderWidth: 2,
+//                 }
+//             },
+//             responsive: true,
+//             plugins: {
+//                 legend: {
+//                     position: 'bottom',
+//                 },
+//                 title: {
+//                     display: true,
+//                     text: 'Donaciones/Transfusiones en los últimos 6 meses'
+//                 }
+//             }
+//         },
+//     };
+
+//     const myChart2 = new Chart(ctx, config);
+// });
+
+</script>

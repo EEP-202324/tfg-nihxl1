@@ -28,6 +28,8 @@ class BloodManagement extends CI_Controller
         $data['aggregated_blood_inventory'] = $this->BloodManagementModel->get_aggregated_blood_inventory_data();
         $data['donor_age_distribution'] = $this->BloodManagementModel->get_donor_age_distribution();
         $data['lowest_blood_type'] = $this->BloodManagementModel->get_lowest_blood_type();
+
+
             
         
         $this->load->view('STYLES/header');

@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
+                <!-- <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#cita" aria-expanded="false" aria-controls="auth">
                         <i class="bi bi-calendar-plus"></i>
@@ -60,7 +60,7 @@
                             <a href="<?php echo base_url('Admin/Appointments/addAppointment');?>" class="sidebar-link">Agendar cita</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#blood" aria-expanded="false" aria-controls="auth">
