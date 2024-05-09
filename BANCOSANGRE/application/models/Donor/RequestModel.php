@@ -32,5 +32,11 @@ class RequestModel extends CI_Model
         return $query->result();
     }
 
+    public function addRequest($data)
+    {
+        $this->db->insert('request', $data);
+        return $this->db->insert_id(); 
+    }
+
 }
 ?>

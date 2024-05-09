@@ -253,12 +253,10 @@ $(document).ready(function() {
 
         $("#edit-DonorModal").modal('show');
 
-        // Add a submit event listener to the form
         $("#editDonorForm").off("submit").on("submit", function(event) {
-          event.preventDefault(); // Prevent default form submission
-          var formData = $(this).serialize(); // Serialize form data
+          event.preventDefault();
+          var formData = $(this).serialize(); 
 
-          // Send the form data to the server
           $.ajax({
             url: "<?php echo base_url('Admin/Donors/update_donor'); ?>",
             type: "POST",
@@ -266,11 +264,9 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
               if (response.success) {
-                // If the update was successful, close the modal and reload the page
                 $("#editDonorModal").modal('hide');
                 location.reload();
               } else {
-                // If the update failed, display an error message
                 alert('Failed to update donor.');
               }
             },

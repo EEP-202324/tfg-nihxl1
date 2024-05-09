@@ -26,23 +26,23 @@
                         data-bs-target="#cita" aria-expanded="false" aria-controls="auth">
                         <i class="bi bi-calendar-plus"></i>
                         <!-- <i class="bi bi-file-earmark-break"></i> -->
-                        <span>Citas</span>
+                        <span>Solicitudes</span>
                     </a>
                     <ul id="cita" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Donor/Appointments');?>" class="sidebar-link">Ver Todas</a>
+                            <a href="<?php echo base_url('Donor/Request');?>" class="sidebar-link">Ver Todas</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="<?php echo base_url('Donor/Appointments/addAppointment');?>" class="sidebar-link">Agendar cita</a>
+                            <a href="<?php echo base_url('Donor/Request/addRequest');?>" class="sidebar-link">Añadir solicitud</a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
+                <!-- <li class="sidebar-item">
                     <a href="<?php echo base_url('Donor/Request');?>" class="sidebar-link">
                         <i class="lni lni-popup"></i>
                         <span>Solicitudes</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-item">
                     <a href="<?php echo base_url('Donor/Quiz');?>" class="sidebar-link">
                     <i class="bi bi-file-earmark-break"></i>
