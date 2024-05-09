@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card border-secondary mb-3">
-                    <div class="row">
+                    <div class="row"> 
                         <?php foreach ($pouches_data as $pouch): ?>
                             <div class="col border-right border-danger">
                                 <div class="card-body text-secondary text-center">
@@ -54,7 +54,7 @@
                         <div class="card-body">
                             Tipo de sangre más bajo: <?php echo $lowest_blood_type['type']; ?> <?php echo $lowest_blood_type['rh_factor']; ?>
                          
-                            <form action="<?php echo base_url('Admin/Email/index'); ?>" method="post">
+                            <form action="<?php echo base_url('Admin/EmailController/index'); ?>" method="post">
                                 <button class="btn btn-primary" type="submit" id="red">Envié emails</button>
                             </form>
                     

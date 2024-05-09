@@ -4,9 +4,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// require 'path/to/PHPMailer/src/Exception.php';
-// require 'path/to/PHPMailer/src/PHPMailer.php';
-// require 'path/to/PHPMailer/src/SMTP.php';
+require 'path/to/PHPMailer/src/Exception.php';
+require 'path/to/PHPMailer/src/PHPMailer.php';
+require 'path/to/PHPMailer/src/SMTP.php';
 require 'third_party/PHPMailer/src/Exception.php';
 require 'third_party/PHPMailer/src/PHPMailer.php';
 require 'third_party/PHPMailer/src/SMTP.php';
@@ -72,13 +72,13 @@ class EmailController extends CI_Controller
 
     echo "Los emails han sido enviados";
 }
-
+ 
     
 
     public function sendEmail($to, $subject, $body)
     {
         try {
-            $this->mailer->addAddress($to);
+            $this->mailer->addAddress('nihalktitu@gmail.com');
 
             $this->mailer->Subject = $subject;
             $this->mailer->Body = $body;

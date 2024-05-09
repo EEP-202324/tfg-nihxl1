@@ -8,12 +8,17 @@ class Welcome extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('Admin/NewsModel');
-    }
+        $this->load->model('Admin/BloodManagementModel');
+
+
+    } 
 
     public function index()
 	{
 
         $data['news'] = $this->NewsModel->obtenerNoticias5();
+        $data['lowest_blood_type'] = $this->BloodManagementModel->get_lowest_blood_type();
+
 		$this->load->view('STYLES/header');
         $this->load->view('NoLoginDonante/sidebarNoLogin');
 		

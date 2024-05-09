@@ -4,12 +4,13 @@
     </div>
     <div class="container">
         <div class="row">
-    <div class="col-md-4">
-      <div class="card h-100">
-        <div class="card-body text-center">
-          <img src="" alt="Foto perfil" class="profile-img mb-3">
-        </div>
-      </div>
+    <div class="col-md-4"> 
+    <div class="card h-100">
+    <div class="card-body text-center">
+        <img src="../../../../img/user_doodle.png" alt="Foto perfil" class="profile-img mb-3" style="width: 100%; height: auto;">
+    </div>
+</div> 
+
     </div>
     <div class="col-md-8">
       <div class="card h-100">

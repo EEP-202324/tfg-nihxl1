@@ -16,7 +16,7 @@ class BloodManagement extends CI_Controller
 
         $this->load->model('Admin/BloodManagementModel');
         
-    }
+    } 
   
     public function index() {
         $this->load->model('Admin/BloodManagementModel'); 

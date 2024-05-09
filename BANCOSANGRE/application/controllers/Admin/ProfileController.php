@@ -14,11 +14,13 @@ class ProfileController extends CI_Controller
             redirect(base_url());
         }
     }
-
+ 
 
     public function index()
 	{
         $user_id = $this->session->userdata('user')['user_id'];
+
+       
         $data['user'] = $this->ProfileModel->getUserData($user_id); 
 
 		$this->load->view('STYLES/header');

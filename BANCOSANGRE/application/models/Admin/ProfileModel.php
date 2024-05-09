@@ -13,11 +13,13 @@ class ProfileModel extends CI_Model
         $this->db->select('*'); 
         $this->db->from('user');
         // $this->db->join('admin', 'user.user_id = admin.user_id');
-        // $this->db->where('user.user_id', $user_id);
+        $this->db->where('user.user_id', $user_id);
         $query = $this->db->get();
         return $query->row();
+        // var_dump($query);
     }
 
 
 }
 ?>
+ 

@@ -58,7 +58,8 @@
                 </div>
                 <div class="card" id="card-red">
                     <div class="card-body">
-                        <h5 class="card-title">URGENTE SANGRE TIPO O-</h5>
+                        Tipo de sangre más bajo: <?php echo $lowest_blood_type['type']; ?> <?php echo $lowest_blood_type['rh_factor']; ?>
+
                         <ul class="list-group">
                             <li class="list-group-item">AYUDA AQUÍ!</li>
                         </ul>
