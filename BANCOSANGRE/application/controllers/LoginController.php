@@ -35,7 +35,6 @@ class LoginController extends CI_Controller
                     'role_id' => $user_data['role_id']
                 ));
 
-                // Redirect based on user role
                 if ($user_data['role_id'] == '1') {
                     redirect(base_url().'Admin/DashboardController');
                 } elseif ($user_data['role_id'] == '2') {

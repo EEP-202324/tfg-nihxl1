@@ -54,14 +54,12 @@
                         <div class="card-body">
                             Tipo de sangre más bajo: <?php echo $lowest_blood_type['type']; ?> <?php echo $lowest_blood_type['rh_factor']; ?>
                          
-                            <form action="<?php echo base_url('Admin/EmailController/index'); ?>" method="post">
+                            <form action="<?php echo base_url('EmailController/index'); ?>" method="post">
                                 <button class="btn btn-primary" type="submit" id="red">Envié emails</button>
                             </form>
                     
                         </div>
                     </div>
-
-                        
                         <canvas id="myChart" style="max-height: 100%;"></canvas>
                     </div>
                 </div>
@@ -463,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
         plugins: {
             title: {
                 display: true,
-                text: 'Donor Age Distribution', 
+                text: 'Media de donantes por edad', 
                 // font: {
                 //     size: 18, // Adjust font size as needed
                 //     weight: 'bold' // Adjust font weight as needed

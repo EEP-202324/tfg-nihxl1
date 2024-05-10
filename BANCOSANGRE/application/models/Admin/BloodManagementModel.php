@@ -137,19 +137,22 @@ class BloodManagementModel extends CI_Model {
     }
 
 
-    public function get_donors_by_blood_type($type, $rh_factor)
+    public function get_donors_by_blood_type($type)
     {
-        $type_parts = str_split($type);
-        $blood_type = $type_parts[0]; 
-        $rh_sign = $type_parts[1];    
-    
-        $this->db->select('email');
+        $blood_type = $type[0];
+        $rh_factor = $type[1]; 
+        
+        $this->db->select('user.email');
         $this->db->from('donor');
-        $this->db->where('blood_type', $blood_type);
-        $this->db->like('rh_factor', $rh_sign, 'after'); 
+        $this->db->join('user', 'user.user_id = donor.user_id');
+        $this->db->where('donor.blood_type', $blood_type);
+        $this->db->like('donor.blood_type', $rh_factor, 'after'); // Search for Rh factor after the blood type
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    
+    
 
     
  
