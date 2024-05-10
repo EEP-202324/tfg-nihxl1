@@ -9,7 +9,7 @@ class Welcome extends CI_Controller
         $this->load->library('session');
         $this->load->model('Admin/NewsModel');
         $this->load->model('Admin/BloodManagementModel');
-
+        $this->load->model('Admin/DonorModel');
 
     } 
 
@@ -18,11 +18,13 @@ class Welcome extends CI_Controller
 
         $data['news'] = $this->NewsModel->obtenerNoticias5();
         $data['lowest_blood_type'] = $this->BloodManagementModel->get_lowest_blood_type();
+        $data['diseases'] = $this->DonorModel->get_all_diseases();
+
 
 		$this->load->view('STYLES/header');
         $this->load->view('NoLoginDonante/sidebarNoLogin');
 		
-        $this->load->view('NoLoginDonante/navbar');
+        $this->load->view('NoLoginDonante/navbar',$data);
 		$this->load->view('NoLoginDonante/Body/welcome_message', $data); 
         $this->load->view('NoLoginDonante/footer');
 

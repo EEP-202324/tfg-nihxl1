@@ -32,9 +32,7 @@
                         <li class="sidebar-item">
                             <a href="<?php echo base_url('Donor/Request');?>" class="sidebar-link">Ver Todas</a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="<?php echo base_url('Donor/Request/addRequest');?>" class="sidebar-link">Añadir solicitud</a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <!-- <li class="sidebar-item">

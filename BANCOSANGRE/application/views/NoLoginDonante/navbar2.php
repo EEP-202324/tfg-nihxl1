@@ -9,7 +9,7 @@
         <i class="bi bi-person-circle"><noscript></noscript></i>     
         </button>
         <button type="button" class="btn btn border " data-bs-toggle="modal" data-bs-target="#exampleModal2" width="75" height="75"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; ">
-            <i class="bi bi-person-circle"></i>     
+            <i class="bi bi-person-circle"><b>+</b></i>     
         </button>
         </div>
     </div>

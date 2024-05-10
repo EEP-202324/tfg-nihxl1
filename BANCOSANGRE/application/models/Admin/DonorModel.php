@@ -19,7 +19,7 @@ class DonorModel extends CI_Model
 
     public function get_donor($user_id) {
         $this->db->select('*');
-        $this->db->from('user');
+        $this->db->from('user'); 
         $this->db->join('donor', 'user.user_id = donor.user_id', 'inner');
         $this->db->where('user.user_id', $user_id);
         $query = $this->db->get();
@@ -28,7 +28,7 @@ class DonorModel extends CI_Model
       
     public function register_donor($donor_data) {
 
-        $hashed_password = md5($donor_data['password']);
+        
     
         $user_data = array(
             'name' => $donor_data['name'],
@@ -37,7 +37,7 @@ class DonorModel extends CI_Model
             'address' => $donor_data['address'],
             'phone' => $donor_data['phone'],
             'email' => $donor_data['email'],
-            'password' => $hashed_password,
+            'password' => $donor_data['password'],
             'age' => $donor_data['age'],
             'gender' => $donor_data['gender'],
             'role_id' => 2

@@ -15,7 +15,7 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Doctor</th>
                     <th>Fecha</th>
                     
                     <th>Tipo sangre</th>
@@ -36,7 +36,7 @@
                 <tfoot>
                   <tr>
                     <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Doctor</th>
                     <th>Fecha</th>
                     
                     <th>Tipo sangre</th>
