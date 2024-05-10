@@ -1,16 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer; 
 use PHPMailer\PHPMailer\Exception;
-
-require 'path/to/PHPMailer/src/Exception.php';
-require 'path/to/PHPMailer/src/PHPMailer.php';
-require 'path/to/PHPMailer/src/SMTP.php';
-require 'third_party/PHPMailer/src/Exception.php';
-require 'third_party/PHPMailer/src/PHPMailer.php';
-require 'third_party/PHPMailer/src/SMTP.php';
-
 
 class EmailController extends CI_Controller
 {
@@ -22,75 +14,57 @@ class EmailController extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('Admin/BloodManagementModel');
-
-        $this->mailer = new PHPMailer(true);
-
-        
-        $this->mailer->isSMTP();
-        $this->mailer->Host = 'smtp.gmail.com';
-        $this->mailer->SMTPAuth = true;
-        $this->mailer->Username = 'cosas.ni01@gmail.com'; 
-        $this->mailer->Password = '@RaYa0810+'; 
-        $this->mailer->SMTPSecure = 'tls';
-        $this->mailer->Port = 587;
-
-        $this->mailer->setFrom('bloodbank@gmail.com', 'Banco de Sangre'); 
-        $this->mailer->isHTML(true);
-
+        $this->load->library('phpmailer_lib');
     }
 
-    public function index()
-{
-    $lowest_blood_type = $this->BloodManagementModel->get_lowest_blood_type();
-
-    $donors = $this->BloodManagementModel->get_donors_by_blood_type($lowest_blood_type['type'], $lowest_blood_type['rh_factor']);
-
-    $subject = "URGENTE! DONAR ES VIDA";
-
-    $body = "
-    Estimado/a donante,
-
-    Esperamos que este mensaje le encuentre bien. Nos dirigimos a usted con gran urgencia y sinceridad para informarle sobre una situación crítica en nuestro banco de sangre.
-
-    Hemos identificado que su tipo de sangre es uno de los que escasean en nuestras reservas actuales. En estos momentos, su donación de sangre podría marcar la diferencia entre la vida y la muerte para alguien en necesidad urgente.
-
-    Por favor, considere generosamente la posibilidad de donar sangre en nuestro centro. Su acto de solidaridad y compasión puede salvar vidas y brindar esperanza a aquellos que luchan por su salud.
-
-    Recuerde que donar sangre es un gesto noble y altruista que tiene un impacto directo en la vida de quienes lo necesitan. Juntos, podemos hacer una diferencia significativa en nuestra comunidad.
-
-    Agradecemos de antemano su valiosa contribución y estamos disponibles para cualquier pregunta o inquietud que pueda tener. Por favor, no dude en comunicarse con nosotros para obtener más información sobre cómo puede ayudar.
-
-    Gracias por su atención y consideración.
-
-    Atentamente,
-    Bloodbank.com
-    ";
-
-    foreach ($donors as $donor) {
-        $this->sendEmail($donor['email'], $subject, $body);
-    }
-
-    echo "Los emails han sido enviados";
-}
- 
-    
-
-    public function sendEmail($to, $subject, $body)
+    function index()
     {
-        try {
-            $this->mailer->addAddress('nihalktitu@gmail.com');
 
-            $this->mailer->Subject = $subject;
-            $this->mailer->Body = $body;
 
-            $this->mailer->send();
+        require APPPATH.'third_party/PHPMailer/src/Exception.php';
+        require APPPATH.'third_party/PHPMailer/src/PHPMailer.php';
+        require APPPATH.'third_party/PHPMailer/src/SMTP.php';
 
-            $this->mailer->clearAddresses();
-            $this->mailer->clearAttachments();
+        $mail = new PHPMailer(true);
 
-            return true; 
-        } catch (Exception $e) {
-            return false; 
+        $mail->isSMTP();
+
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+
+        // $mail->Host = 'smtp.zelenza.com'; // Reemplaza con tu servidor SMTP
+        // $mail->SMTPAuth = true;
+        //$mail->Port = 25; // Puerto SMTP
+
+        $mail->isSMTP();
+        $mail->Host = "smtp.office365.com";
+        $mail->Port = 587;
+        $mail->SMTPAuth = true;
+
+        $mail->Username = 'bancosangre-inf0@hotmail.com'; // Reemplaza con tu dirección de correo
+        $mail->Password = 'BancoSangreInf0!'; // Reemplaza con tu contraseña de correo
+        
+
+        $mail->setFrom('bancosangre-inf0@hotmail.com', 'PRUEBA DANI');
+        $mail->addAddress('nihalktitu@gmail.com');
+        $mail->Subject = 'PRUEBA DANI';
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
+        $mail->Body = 'HOLA MUNDO <h1>HOLA CHICOS</h1><b>zelenza</b>';
+ 
+        // Send email
+        if(!$mail->send()){
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }else{
+            echo 'Message has been sent';
         }
+
     }
+
 }

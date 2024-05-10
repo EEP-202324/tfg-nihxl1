@@ -127,7 +127,7 @@ class BloodManagementModel extends CI_Model {
         $query = $this->db->get('bloodinventory');
         return $query->result_array();
     }
-    
+     
     
     public function get_lowest_blood_type() {
         $this->db->select('type, rh_factor, MIN(quantity) as min_quantity');
