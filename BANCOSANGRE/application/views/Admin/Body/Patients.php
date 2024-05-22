@@ -15,6 +15,9 @@
               <table id="example" class="table table-striped data-table" style="width: 100%">
                 <thead>
                   <tr>
+                  <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
+                    <!-- <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th> -->
+                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cumpleaños</th>
@@ -26,15 +29,34 @@
                     <th>Sangre</th>
                     <!-- <th>Enfermedades</th> -->
                     <th>Alergias</th>
-                    <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
-                    <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
-                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
+
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($patients as $patient) { ?>
                     <tr>
-                      
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm view-patient-btn"
+                          data-bs-toggle="modal" data-bs-target="#viewPatientModal"
+                          data-patient-id="<?php echo $patient->user_id; ?>">
+                          <i class="bi bi-person-bounding-box"></i>
+                        </button>
+                      </td>
+                      <!-- Edit patient button -->
+                      <!-- <td>
+                        <button type="button" class="btn btn-primary  btn-sm edit-patient-btn"
+                          data-bs-toggle="modal" data-bs-target="#editPatientModal"
+                          data-patient-id="<?php echo $patient->user_id; ?>">
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                      </td> -->
+                      <!-- Delete patient form -->
+                      <td>
+                        <form method="post" action="<?php echo base_url('admin/patients/delete/' . $patient->user_id); ?>"
+                          onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                        </form>
+                      </td>
                       <td><?php echo $patient->name; ?></td>
                       <td><?php echo $patient->lastname; ?></td>
                       <td><?php echo $patient->birthday; ?></td>
@@ -47,33 +69,15 @@
                       <!-- <td><?php echo $patient->disease; ?></td> -->
                       <td><?php echo $patient->alergies; ?></td>
                       
-                      <td>
-                        <button type="button" class="btn btn-primary btn-sm view-patient-btn"
-                          data-bs-toggle="modal" data-bs-target="#viewPatientModal"
-                          data-patient-id="<?php echo $patient->user_id; ?>">
-                          <i class="bi bi-person-bounding-box"></i>
-                        </button>
-                      </td>
-                      <!-- Edit patient button -->
-                      <td>
-                        <button type="button" class="btn btn-primary  btn-sm edit-patient-btn"
-                          data-bs-toggle="modal" data-bs-target="#editPatientModal"
-                          data-patient-id="<?php echo $patient->user_id; ?>">
-                          <i class="bi bi-pencil-square"></i>
-                        </button>
-                      </td>
-                      <!-- Delete patient form -->
-                      <td>
-                        <form method="post" action="<?php echo base_url('admin/patients/delete/' . $patient->user_id); ?>"
-                          onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">
-                          <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                        </form>
-                      </td>
+
                     </tr>
                   <?php } ?>
                 </tbody>
                 <tfoot>
                   <tr>
+                    <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
+                    <!-- <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th> -->
+                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cumpleaños</th>
@@ -85,9 +89,7 @@
                     <th>Sangre</th>
                     <!-- <th>Enfermedades</th> -->
                     <th>Alergias</th>
-                    <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
-                    <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
-                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
+                    
                   </tr>
                 </tfoot>
               </table>

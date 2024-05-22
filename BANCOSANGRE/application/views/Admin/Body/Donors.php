@@ -14,6 +14,9 @@
               <table id="example" class="table table-striped data-table" style="width: 100%">
                 <thead>
                   <tr>
+                  <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
+                    <!-- <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th> -->
+                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cumpleaños</th>
@@ -27,21 +30,40 @@
                     <th>Alergias</th>
                     <th>Nº de donaciones</th>
                     <th>Última vez</th>
-                    <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
-                    <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
-                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($donors as $donor) { ?>
                     <tr>
+                    <td>
+                        <button type="button" class="btn btn-primary border btn-sm view-donor-btn"
+                          data-bs-toggle="modal" data-bs-target="#viewDonorModal"
+                          data-donor-id="<?php echo $donor->user_id; ?>">
+                          <i class="bi bi-person-bounding-box"></i>
+                        </button>
+                      </td>
+                      <!-- <td>
+                        <button type="button" class="btn btn-primary border btn-sm edit-donor-btn disable"
+                          data-bs-toggle="modal" data-bs-target="#editDonorModal"
+                          data-donor-id="<?php echo $donor->user_id; ?>">
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                      </td> -->
+                      
+                      <td>
+                        <form method="post" action="<?php echo base_url('admin/donors/delete/' . $donor->user_id); ?>"
+                          onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                        </form>
+                      </td>
                       <td><?php echo $donor->name; ?></td>
                       <td><?php echo $donor->lastname; ?></td>
                       <td><?php echo $donor->birthday; ?></td>
                       <td><?php echo $donor->address; ?></td>
                       <td><?php echo $donor->phone; ?></td>
                       <td><?php echo $donor->email; ?></td>
-                      <td><?php echo $donor->age; ?></td>
+                      <!-- <td><?php echo $donor->age; ?></td> -->
                       <td><?php echo $donor->gender; ?></td>
                       <td><?php echo $donor->blood_type; ?></td>
                       <!-- <td><?php echo $donor->disease; ?></td> -->
@@ -49,33 +71,15 @@
                       <td><?php echo $donor->donation_count; ?></td>
                       <td><?php echo $donor->last_donation_date; ?></td>
                       
-                      <td>
-                        <button type="button" class="btn btn-primary border btn-sm view-donor-btn"
-                          data-bs-toggle="modal" data-bs-target="#viewDonorModal"
-                          data-donor-id="<?php echo $donor->user_id; ?>">
-                          <i class="bi bi-person-bounding-box"></i>
-                        </button>
-                      </td>
-                      <!-- Edit donor button -->
-                      <td>
-                        <button type="button" class="btn btn-primary border btn-sm edit-donor-btn"
-                          data-bs-toggle="modal" data-bs-target="#editDonorModal"
-                          data-donor-id="<?php echo $donor->user_id; ?>">
-                          <i class="bi bi-pencil-square"></i>
-                        </button>
-                      </td>
-                      <!-- Delete donor form -->
-                      <td>
-                        <form method="post" action="<?php echo base_url('admin/donors/delete/' . $donor->user_id); ?>"
-                          onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">
-                          <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                        </form>
-                      </td>
+                      
                     </tr>
                   <?php } ?>
                 </tbody>
                 <tfoot>
                   <tr>
+                  <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
+                    <!-- <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th> -->
+                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cumpleaños</th>
@@ -89,9 +93,7 @@
                     <th>Alergias</th>
                     <th>Nº de donaciones</th>
                     <th>Última vez</th>
-                    <th><i class="bi bi-person-bounding-box" style="border: 5px; font-size: 18px;"></i></th>
-                    <th><i class="bi bi-pencil-square" style="font-size: 18px;"></i></th>
-                    <th><i class="bi bi-trash" style="font-size: 18px;"></i></th>
+                    
                   </tr>
                 </tfoot>
               </table>

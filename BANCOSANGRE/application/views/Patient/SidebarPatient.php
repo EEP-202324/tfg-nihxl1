@@ -15,13 +15,13 @@
                         <span>Perfil</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                 <li class="sidebar-item">
                     <a href="<?php echo base_url('Patient/Transfutions');?>" class="sidebar-link">
                         <i class="bi bi-droplet-half" style="color: white;"></i>
                         <span>Historial transfusiones</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <!--<<li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#cita" aria-expanded="false" aria-controls="auth">
                         <i class="bi bi-calendar-plus"></i>  
@@ -35,7 +35,7 @@
                             <a href="<?php echo base_url('Patient/Appointments');?>" class="sidebar-link">Agendar cita</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <div class="sidebar-footer">
                 <a href="<?php echo base_url('LoginController/logout');?>" class="sidebar-link">

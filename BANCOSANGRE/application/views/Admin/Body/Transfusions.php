@@ -38,7 +38,6 @@
                     <th>Nombre</th>
                     <th>Doctor</th>
                     <th>Fecha</th>
-                    
                     <th>Tipo sangre</th>
                     <th>Cantidad</th>
                   </tr>
