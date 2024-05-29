@@ -15,6 +15,7 @@ class Quiz extends CI_Controller
         }
     }
 
+    //Carga de vistas con los datos correspondientes desdel modelo
     public function index()
     {
         $user_id = $this->session->userdata('user')['user_id'];

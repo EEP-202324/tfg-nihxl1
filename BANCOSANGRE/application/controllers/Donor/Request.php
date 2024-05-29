@@ -70,9 +70,6 @@ class Request extends CI_Controller
         $this->load->view('Donor/SidebarDonor');
         $this->load->view('Donor/Body/Requests', $data);
 
-
-
-
     } else {
 
         $this->session->set_flashdata('success', 'Registro incorrecto');

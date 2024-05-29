@@ -17,10 +17,13 @@ class EmailController extends CI_Controller
         $this->load->library('phpmailer_lib');
     }
 
+    
+    //Carga de vistas con los datos correspondientes desdel modelo
+    //Uso de la librería de PHPMailer para enviar correos
     function index()
     {
 
-
+        //Configuración
         require APPPATH.'third_party/PHPMailer/src/Exception.php';
         require APPPATH.'third_party/PHPMailer/src/PHPMailer.php';
         require APPPATH.'third_party/PHPMailer/src/SMTP.php';
@@ -37,21 +40,14 @@ class EmailController extends CI_Controller
             )
         );
 
-        // $mail->Host = 'smtp.zelenza.com'; // Reemplaza con tu servidor SMTP
-        // $mail->SMTPAuth = true;
-        //$mail->Port = 25; // Puerto SMTP
-
         $mail->isSMTP();
         $mail->Host = "smtp.office365.com";
         $mail->Port = 587;
         $mail->SMTPAuth = true;
 
-        $mail->Username = 'bancosangre-inf0@hotmail.com'; // Reemplaza con tu dirección de correo
-        $mail->Password = 'BancoSangreInf0!'; // Reemplaza con tu contraseña de correo
+        $mail->Username = 'bancosangre-inf0@hotmail.com'; 
+        $mail->Password = 'BancoSangreInf0!';
         
-
-        // $lowest_blood_type = $this->BloodManagementModel->get_lowest_blood_type();
-        // $donors = $this->BloodManagementModel->get_donors_by_blood_type($lowest_blood_type['type'], $lowest_blood_type['rh_factor']);
 
         $lowest_blood_type = $this->BloodManagementModel->get_lowest_blood_type();
         $blood_type = $lowest_blood_type['type'] . $lowest_blood_type['rh_factor'];
@@ -88,7 +84,7 @@ class EmailController extends CI_Controller
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         }else{
             echo "<script>alert('Los emails han sido enviados');</script>";
-
+            //Carga de datos del modelo en las vistas
             $this->load->model('Admin/BloodManagementModel'); 
             $data['pouches_data'] = $this->BloodManagementModel->get_pouches_data();
             $data['patient_diseases'] = $this->BloodManagementModel->get_patient_diseases_data();
@@ -98,10 +94,7 @@ class EmailController extends CI_Controller
             $data['aggregated_blood_inventory'] = $this->BloodManagementModel->get_aggregated_blood_inventory_data();
             $data['donor_age_distribution'] = $this->BloodManagementModel->get_donor_age_distribution();
             $data['lowest_blood_type'] = $this->BloodManagementModel->get_lowest_blood_type();
-    
-    
-                
-            
+   
             $this->load->view('STYLES/header');
             $this->load->view('Admin/SidebarAdmin');
             $this->load->view('Admin/Body/BloodManagement', $data); 

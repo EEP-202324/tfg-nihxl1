@@ -11,6 +11,7 @@ class Info extends CI_Controller
 
     }
 
+    
     public function WhyGiveBlood()
 	{
 		$this->load->view('STYLES/header');

@@ -14,10 +14,7 @@ class Requests extends CI_Controller
         }
     }
 
-    function hola(){
-        echo base_url();
-    }
-
+    //Carga de vistas con los datos correspondientes desdel modelo
     public function index()
 	{
 		$this->load->view('STYLES/header');;
