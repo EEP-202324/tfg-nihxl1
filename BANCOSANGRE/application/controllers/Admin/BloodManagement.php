@@ -38,8 +38,7 @@ class BloodManagement extends CI_Controller
         $this->load->view('Admin/FooterAdmin');
     }
     
-    
-
+    // Carga de vistas relacionadas con el manejo de sangre
     public function Donations() {
         $this->load->model('Admin/DonationsModel');
         $data['donations'] = $this->DonationsModel->get_donations_data();

@@ -24,7 +24,6 @@ class DashboardController extends CI_Controller
         $data['transfusion_data'] = $this->DashboardModel->get_transfusion_data(); 
 
         $this->load->view('STYLES/header');
-        //$this->load->view('Admin/NavBar');
         $this->load->view('Admin/SidebarAdmin');
         $this->load->view('Admin/Body/Dashboard', $data); 
         $this->load->view('Admin/FooterAdmin');

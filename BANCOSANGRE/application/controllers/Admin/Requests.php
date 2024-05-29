@@ -19,44 +19,46 @@ class Requests extends CI_Controller
         $this->load->view('Admin/FooterAdmin');
 	}  
 
-
+    //Función para aceptar solicitudes
     public function accept_request($requestId)
-{
-    $success = $this->RequestsModel->update_request_status($requestId, 'Aceptada');
-  
-    if ($success) {
-        echo json_encode(['success' => false, 'message' => 'Error al aceptar la solicitud.']);
-
-    } else {
-        echo json_encode(['success' => true, 'message' => 'Solicitud aceptada exitosamente.']);
-
-    }
-}
-
-
-public function deny_request($requestId)
-{
-    $success = $this->RequestsModel->update_request_status($requestId, 'Denegada');
+    {
+        $success = $this->RequestsModel->update_request_status($requestId, 'Aceptada');
     
-    if ($success) {
-        echo json_encode(['success' => false, 'message' => 'Error al denegar la solicitud.']);
-    } else {
-        echo json_encode(['success' => true, 'message' => 'Solicitud denegada exitosamente.']);
+        if ($success) {
+            echo json_encode(['success' => false, 'message' => 'Error al aceptar la solicitud.']);
+
+        } else {
+            echo json_encode(['success' => true, 'message' => 'Solicitud aceptada exitosamente.']);
+
+        }
     }
-}
 
-public function put_on_hold($requestId)
-{
-    $success = $this->RequestsModel->update_request_status($requestId, 'En espera');
-    
-    if ($success) {
-        echo json_encode(['success' => false, 'message' => 'Error al poner en espera la solicitud.']);
-
-    } else {
-        echo json_encode(['success' => true, 'message' => 'Solicitud puesta en espera exitosamente.']);
-
+    //Función para denegar solicitudes
+    public function deny_request($requestId)
+    {
+        $success = $this->RequestsModel->update_request_status($requestId, 'Denegada');
+        
+        if ($success) {
+            echo json_encode(['success' => false, 'message' => 'Error al denegar la solicitud.']);
+        } else {
+            echo json_encode(['success' => true, 'message' => 'Solicitud denegada exitosamente.']);
+        }
     }
-}
+
+
+    //Función para poner en espera solicitudes
+    public function put_on_hold($requestId)
+    {
+        $success = $this->RequestsModel->update_request_status($requestId, 'En espera');
+        
+        if ($success) {
+            echo json_encode(['success' => false, 'message' => 'Error al poner en espera la solicitud.']);
+
+        } else {
+            echo json_encode(['success' => true, 'message' => 'Solicitud puesta en espera exitosamente.']);
+
+        }
+    }
 
 }
 ?>

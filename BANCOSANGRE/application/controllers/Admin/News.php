@@ -25,6 +25,7 @@ class News extends CI_Controller
         $this->load->view('Admin/FooterAdmin');
     }
 
+    //Función para añadir noticias
     public function addNew()
     {
         $this->load->view('STYLES/header');
@@ -41,6 +42,7 @@ class News extends CI_Controller
     }
 
     
+    //Función para eliminar noticias
     public function deleteNews()
     {
         $id = $this->input->post('newsID'); 

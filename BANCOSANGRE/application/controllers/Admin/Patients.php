@@ -18,6 +18,7 @@ class Patients extends CI_Controller {
         $this->load->view('Admin/FooterAdmin');
     }   
 
+    //Función para recoger información  del paciente
     public function get_patient($user_id) {
         
         $data['patient'] = $this->PatientModel->get_patient($user_id);
@@ -25,6 +26,7 @@ class Patients extends CI_Controller {
     }
     
 
+    //Función para registrar paciente
     public function register_patient() {
         
         $data['diseases'] = $this->PatientModel->get_all_diseases();
@@ -61,7 +63,7 @@ class Patients extends CI_Controller {
     }
 
 
-
+    //Función para eleminar noticias
     public function delete($user_id) {
         $result = $this->PatientModel->delete_patient($user_id);
         if ($result) {
@@ -72,23 +74,21 @@ class Patients extends CI_Controller {
         }
     }
 
-    public function update_patient() {
-        // Obtain data from the edit form
-        $patient_data = array(
-            'user_id' => $this->input->post('user_id'),
-            'name' => $this->input->post('name'),
-            // Include the rest of the fields here
-        );
+    // public function update_patient() {
+    //   
+    //     $patient_data = array(
+    //         'user_id' => $this->input->post('user_id'),
+    //         'name' => $this->input->post('name'),
+            
+    //     );
     
-        // Update patient data in the database
-        $result = $this->PatientModel->update_patient($patient_data);
+    //     $result = $this->PatientModel->update_patient($patient_data);
     
-        // Respond with JSON indicating success or failure
-        if ($result) {
-            echo json_encode(array("success" => true));
-        } else {
-            echo json_encode(array("success" => false));
-        }
-    }
+    //     if ($result) {
+    //         echo json_encode(array("success" => true));
+    //     } else {
+    //         echo json_encode(array("success" => false));
+    //     }
+    // }
     }
 ?>

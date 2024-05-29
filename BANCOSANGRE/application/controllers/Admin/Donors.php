@@ -19,7 +19,9 @@ class Donors extends CI_Controller
 		$this->load->view('Admin/Body/Donors',$data);
         $this->load->view('Admin/FooterAdmin');
 	}  
+    
 
+    // Función para recoger la información del donante
     public function get_donor($user_id) {
 
         $data['donor'] = $this->DonorModel->get_donor($user_id);
@@ -27,6 +29,7 @@ class Donors extends CI_Controller
     }
     
 
+    //Función para registrar el donante
     public function register_donor() {
 
         $data['diseases'] = $this->DonorModel->get_all_diseases();
@@ -66,7 +69,7 @@ class Donors extends CI_Controller
     
 
 
-
+    //Función para eliminar la información del donante
     public function delete($user_id) {
         $result = $this->DonorModel->delete_donor($user_id);
         if ($result) {
@@ -96,17 +99,9 @@ class Donors extends CI_Controller
             'last_donation_date' => $this->input->post('lastDonation')
         );
     
-        // Update the donor in the database
-         // Debugging: Output received form data
     var_dump($donor_data);
-
-    // Update the donor in the database
     $result = $this->DonorModel->update_donor($donor_data);
-
-    // Debugging: Output update result
     var_dump($result);
-
-    // Send the response back to the client
     if ($result) {
         echo json_encode(array("success" => true));
     } else {
