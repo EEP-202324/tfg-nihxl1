@@ -14,7 +14,7 @@ class RegistroController extends CI_Controller {
 
 
 
-    
+    //Funcion para registrar nuevos donantes
     public function guardar_registro() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $donor_data = array(

@@ -13,6 +13,7 @@ class Welcome extends CI_Controller
 
     } 
 
+    //Carga de vista con los datos correspondientes del modelo
     public function index()
 	{
 

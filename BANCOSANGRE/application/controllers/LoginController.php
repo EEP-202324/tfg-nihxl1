@@ -12,6 +12,7 @@ class LoginController extends CI_Controller
         $this->load->library('form_validation');
     }
 
+    //Funcion para iniciar sesión dependiendo del usuario dependiendo del tipo de usuario que es
     public function login()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
