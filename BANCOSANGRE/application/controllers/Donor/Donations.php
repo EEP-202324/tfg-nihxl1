@@ -15,6 +15,7 @@ class Donations extends CI_Controller
         }
     }
 
+    //Función para carga la vista de donaciones del usuario donante
     public function index()
     {
         $user_id = $this->session->userdata('user')['user_id'];
@@ -27,13 +28,11 @@ class Donations extends CI_Controller
             $data['donations'] = array();
         }
 
-        // Load views
         try {
             $this->load->view('STYLES/header');
             $this->load->view('Donor/SidebarDonor', $data);
             $this->load->view('Donor/Body/Donations');
         } catch (Exception $e) {
-            // Handle view loading errors
             echo 'Error loading views: ' . $e->getMessage();
         }
     }

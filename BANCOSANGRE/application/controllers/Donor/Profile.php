@@ -15,6 +15,7 @@ class Profile extends CI_Controller
         }
     }
  
+    //Función para carga la vista del perfil del usuario donante
     public function index()
 	{
         $user_id = $this->session->userdata('user')['user_id'];

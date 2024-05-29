@@ -16,6 +16,7 @@ class Request extends CI_Controller
         }
     }
 
+    //Carga de vista con los datos correspondientes
     public function index()
     {
         $user_id = $this->session->userdata('user')['user_id'];
@@ -34,6 +35,7 @@ class Request extends CI_Controller
     }
 
 
+    //Función para que el propio donante añada una solicitud
     public function addRequest()
 {
     if ($this->input->post()) {

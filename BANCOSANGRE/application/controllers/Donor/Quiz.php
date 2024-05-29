@@ -31,6 +31,7 @@ class Quiz extends CI_Controller
         $this->load->view('Donor/Body/Quiz', $data);
     }
 
+    //Función para procesar el quiz
     public function process_quiz()
     {
         $user_id = $this->session->userdata('user')['user_id'];
@@ -60,41 +61,43 @@ class Quiz extends CI_Controller
         }
     }
     
+
+    //Función para determinar la eligibidad del donante
    private function determine_eligibility($quiz_data)
-{
-    if (empty($quiz_data['autoinmune']) || empty($quiz_data['infecciones']) || empty($quiz_data['otras']) || empty($quiz_data['peso'])) {
-        return '';
-    }
-
-    $disqualifying_conditions = array(
-        'HIV/SIDA', 'Hepatitis B', 'Hepatitis C', 'Sífilis', 'Chagas', 'Malaria', 'Babesiosis', 'Toxoplasmosis',
-        'Cáncer activo e inactivo', 'Diabetes no controlada'
-    );
-
-    foreach ($disqualifying_conditions as $condition) {
-        if ($quiz_data['autoinmune'] == $condition || $quiz_data['infecciones'] == $condition || $quiz_data['otras'] == $condition) {
-            return 'ineligible';
+    {
+        if (empty($quiz_data['autoinmune']) || empty($quiz_data['infecciones']) || empty($quiz_data['otras']) || empty($quiz_data['peso'])) {
+            return '';
         }
-    }
 
-    if (!empty($quiz_data['situaciones'])) {
-        foreach ($quiz_data['situaciones'] as $situation) {
-            if ($situation == 'Operación reciente' || $situation == 'Relaciones sexuales de riesgo') {
+        $disqualifying_conditions = array(
+            'HIV/SIDA', 'Hepatitis B', 'Hepatitis C', 'Sífilis', 'Chagas', 'Malaria', 'Babesiosis', 'Toxoplasmosis',
+            'Cáncer activo e inactivo', 'Diabetes no controlada'
+        );
+
+        foreach ($disqualifying_conditions as $condition) {
+            if ($quiz_data['autoinmune'] == $condition || $quiz_data['infecciones'] == $condition || $quiz_data['otras'] == $condition) {
                 return 'ineligible';
             }
         }
-    }
 
-    if (!empty($quiz_data['piercings']) || !empty($quiz_data['tatuajes'])) {
-        return 'ineligible';
-    }
+        if (!empty($quiz_data['situaciones'])) {
+            foreach ($quiz_data['situaciones'] as $situation) {
+                if ($situation == 'Operación reciente' || $situation == 'Relaciones sexuales de riesgo') {
+                    return 'ineligible';
+                }
+            }
+        }
 
-    if ($quiz_data['peso'] < 50) { 
-        return 'ineligible';
-    }
+        if (!empty($quiz_data['piercings']) || !empty($quiz_data['tatuajes'])) {
+            return 'ineligible';
+        }
 
-    return 'eligible';
-}
+        if ($quiz_data['peso'] < 50) { 
+            return 'ineligible';
+        }
+
+        return 'eligible';
+    }
 
 }
 ?>
