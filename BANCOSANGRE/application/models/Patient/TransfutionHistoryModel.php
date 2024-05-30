@@ -8,6 +8,7 @@ class TransfutionHistoryModel extends CI_Model
         $this->load->library('session');
     }
 
+    //Funcion para recoger el id del paciete
     public function getPatientIdFromUserId($user_id)
     {
         $this->db->select('patient_id');
@@ -20,6 +21,7 @@ class TransfutionHistoryModel extends CI_Model
             return null;  
         }
     }
+    //Funcion para recoger los datos de las transfusiones de ese paciente
     public function getPatientTransfutions($patient_id)
     {
         $this->db->select('t.*, u.name AS name, u.lastname AS lastname');

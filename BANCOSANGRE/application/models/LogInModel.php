@@ -8,12 +8,9 @@ class LogInModel extends CI_Model
         $this->load->library('session');
     }
 
+    //Funcion para recoger los datos del usuario para hacer el login
     function log($email, $password)
     {   
-        // $query = $this->db->select('user_id, email, password, role_id')
-        //     ->from('user')
-        //     ->where('email', $email)
-        //     ->get();
 
         $query = $this->db->query("SELECT * FROM user WHERE email = '".$email."' AND password = '".$password."'");
 

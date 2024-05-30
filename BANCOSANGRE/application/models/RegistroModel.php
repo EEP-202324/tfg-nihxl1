@@ -7,6 +7,8 @@ class RegistroModel extends CI_Model
         $this->load->database();
     }
 
+
+    //Funcion para regitrar al usuario tipo donante
     public function guardar_usuario($donor_data) {
 
         

@@ -8,6 +8,7 @@ class ProfileSettingsModel extends CI_Model
         $this->load->library('session');
     }
 
+    //Funcion para recoger los datos del paciete
     public function getUserData($user_id)
     {
         $this->db->select('*'); 
