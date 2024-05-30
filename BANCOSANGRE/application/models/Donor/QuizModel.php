@@ -8,6 +8,8 @@ class QuizModel extends CI_Model
         $this->load->library('session');
     }
 
+
+    //Funcion para recoger el id del donante
     public function getDonorIdFromUserId($user_id)
     {
         $this->db->select('donor_id');
@@ -21,6 +23,7 @@ class QuizModel extends CI_Model
         }
     }
 
+    //Funcion para  guardar el resultado del quiz
     public function save_quiz_result($donor_id, $result)
     {
         $data = array(
@@ -30,6 +33,7 @@ class QuizModel extends CI_Model
         $this->db->insert('quiz', $data);
     }
 
+    //Funcion para recoger los datos del quiz
     public function getQuizResult($donor_id)
     {
         $this->db->select('resultado');

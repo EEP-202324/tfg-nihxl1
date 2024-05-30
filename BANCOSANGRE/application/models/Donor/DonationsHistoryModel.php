@@ -8,6 +8,8 @@ class DonationsHistoryModel extends CI_Model
         $this->load->library('session');
     }
 
+
+    //Funcion para recoger los el id del donante
     public function getDonorIdFromUserId($user_id)
     {
         $this->db->select('donor_id');
@@ -20,6 +22,8 @@ class DonationsHistoryModel extends CI_Model
             return null; 
         }
     }
+
+    //Funcion para recoger los datos de las donaciones
     public function getDonorDonations($donor_id)
     {
         $this->db->select('d.*, u.name AS name, u.lastname AS lastname');

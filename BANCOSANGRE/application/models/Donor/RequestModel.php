@@ -8,6 +8,7 @@ class RequestModel extends CI_Model
         $this->load->library('session');
     }
 
+    //Funcion para recoger el id del donante
    public function getDonorIdFromUserId($user_id)
     {
         $this->db->select('donor_id');
@@ -21,6 +22,7 @@ class RequestModel extends CI_Model
         }
     }
  
+    //Funcion para recoger las solicitides de donante
     public function getRequests($donor_id)
     {
         $this->db->select('r.*, u.name AS name, u.lastname AS lastname');
@@ -32,6 +34,7 @@ class RequestModel extends CI_Model
         return $query->result();
     }
 
+    //Funcion para registar un request
     public function addRequest($data)
     {
         $this->db->insert('request', $data);

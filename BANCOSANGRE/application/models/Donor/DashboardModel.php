@@ -8,6 +8,7 @@ class DashboardModel extends CI_Model
         $this->load->library('session');
     }
 
+    //Funcion para recoger los datos del usuario
     public function getUserName($user_id)
     {
         $this->db->select('name');
