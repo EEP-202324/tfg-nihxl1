@@ -6,6 +6,7 @@ class DonationsModel extends CI_Model {
         $this->load->library('session');
     }
 
+    //Funcion para recoger los datos de las donaciones
     public function get_donations_data() {
         $query = $this->db->query("
             SELECT 

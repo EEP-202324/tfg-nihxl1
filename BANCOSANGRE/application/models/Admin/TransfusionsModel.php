@@ -6,6 +6,7 @@ class TransfusionsModel extends CI_Model {
         $this->load->library('session');
     }
 
+    //Funcion para recoger los datos de las transfusiones
     public function get_transfusions_data() {
         $query = $this->db->query("
             SELECT 

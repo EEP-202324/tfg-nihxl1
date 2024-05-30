@@ -9,6 +9,7 @@ class DonorModel extends CI_Model
     }
 
 
+    //Funcion para recoger los datos de lod donantes
     public function get_all_donors() {
         $this->db->select('user.*, donor.*');
         $this->db->from('user');
@@ -17,6 +18,7 @@ class DonorModel extends CI_Model
         return $query->result(); 
     }
 
+    //Funcion para recoger los datos de un donate con su user_id
     public function get_donor($user_id) {
         $this->db->select('*');
         $this->db->from('user'); 
@@ -26,6 +28,7 @@ class DonorModel extends CI_Model
         return $query->row(); 
     }
       
+    //Funcion para registrar un donante
     public function register_donor($donor_data) {
 
         
@@ -60,6 +63,7 @@ class DonorModel extends CI_Model
         return ($this->db->affected_rows() != 1) ? false : true;
     }
 
+    //Funcion para eliminar un donante
     public function delete_donor($user_id) {
         
         $this->db->where('user_id', $user_id);
@@ -72,6 +76,7 @@ class DonorModel extends CI_Model
     }
 
 
+    //Funcion para actualizar los datos de un donate
     public function update_donor($donor_data) {
         $this->db->where('user_id', $donor_data['user_id']);
         $this->db->update('donor', $donor_data);

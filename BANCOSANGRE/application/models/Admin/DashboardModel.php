@@ -8,6 +8,7 @@ class DashboardModel extends CI_Model {
         $this->load->database();
     } 
 
+    //Funcion para recoger los datos de la sangre
     public function get_blood_data() {
         $this->db->select('type, rh_factor, SUM(quantity) as total_quantity');
         $this->db->from('bloodinventory');
@@ -16,6 +17,7 @@ class DashboardModel extends CI_Model {
         return $query->result_array();
     }
     
+    //Funcion para recoger las  donaciones
     public function get_donation_data() {
         $this->db->select('r.blood_type, SUM(quantity) as total_quantity');
         $this->db->from('donation as d');
@@ -24,7 +26,8 @@ class DashboardModel extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
+    //Funcion para recoger los datos de las transfusiones
     public function get_transfusion_data() {
         $this->db->select('p.blood_type, SUM(quantity) as total_quantity');
         $this->db->from('transfusions as t');

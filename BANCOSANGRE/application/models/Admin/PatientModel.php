@@ -9,6 +9,7 @@ class PatientModel extends CI_Model {
         $this->load->library('session');
     }
  
+    //Funcion para recoger los datos de todos los pacientes
     public function get_all_patients() {
         $this->db->select('user.*, patient.*');
         $this->db->from('user');
@@ -17,6 +18,7 @@ class PatientModel extends CI_Model {
         return $query->result(); 
     }
 
+    //Funcion para recoger los datos de un paciente por el user_id
     public function get_patient($user_id) {
         $this->db->select('*');
         $this->db->from('user');
@@ -26,6 +28,7 @@ class PatientModel extends CI_Model {
         return $query->row(); 
     }
       
+    //Funcion para recoger los datos PARA REGUSTRAR UN PACIENTE
     public function register_patient($patient_data) {
     
         $hashed_password = password_hash($patient_data['password'], PASSWORD_DEFAULT);
@@ -58,7 +61,8 @@ class PatientModel extends CI_Model {
         return ($this->db->affected_rows() != 1) ? false : true;
     }
     
-
+    
+    //Funcion para recoger los datos eliminar a un paciete
     public function delete_patient($user_id) {
         
         $this->db->where('user_id', $user_id);

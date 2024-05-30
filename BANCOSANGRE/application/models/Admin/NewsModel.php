@@ -8,6 +8,7 @@ class NewsModel extends CI_Model
         $this->load->library('session');
     }
 
+    //Funcion para crear una nueva noticia
     function createNew($name, $description)
     {   
         $pattern = "/\bhttps?:\/\/\S+\b/";
@@ -23,6 +24,7 @@ class NewsModel extends CI_Model
         return $this->db->insert_id(); 
     }
  
+    //Funcion para recoger todas las noticias de la bbdd
     function obtenerNoticias()
     {
         $query = $this->db->get('news');
@@ -30,6 +32,7 @@ class NewsModel extends CI_Model
     }
 
 
+    //Funcion para recoger los datos de las ultimas 5 noticias
     public function obtenerNoticias5()
     {
         $query = $this->db->query('SELECT * FROM news ORDER BY newsID DESC LIMIT 5');
@@ -37,6 +40,7 @@ class NewsModel extends CI_Model
     }
 
 
+    //Funcion para recoger los datos y eliminar la ultima noticia
     function deleteNewsById($id)
     {
         $this->db->where('newsID', $id);

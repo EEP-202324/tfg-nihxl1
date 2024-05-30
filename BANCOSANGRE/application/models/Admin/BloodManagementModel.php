@@ -8,6 +8,8 @@ class BloodManagementModel extends CI_Model {
         $this->load->database();
     }
 
+
+    //Funcion para recoger los datos de los diferentes sobres de sangre
     public function get_pouches_data() {
         $this->db->select('type, quantity');
         $this->db->from('pouches');
@@ -15,6 +17,7 @@ class BloodManagementModel extends CI_Model {
         return $query->result_array();
     }
 
+    //Funcion para recoger los datos de las enfermedades de los pacientes
     public function get_patient_diseases_data() {
         $this->db->select('d.disease_name');
         $this->db->from('patient p');
@@ -29,6 +32,7 @@ class BloodManagementModel extends CI_Model {
         return array('labels' => $labels, 'data' => $data);
     }
     
+    //Funcion para recoger recoger los datos de las transfuisones de los ultimos 6 meses
     public function get_recent_transfusions_data() {
         $six_months_ago = date('Y-m-d', strtotime('-6 months'));
     
@@ -46,6 +50,7 @@ class BloodManagementModel extends CI_Model {
     }
     
 
+    //Funcion para recoger recoger los datos de las donaciones de los ultimos 6 meses
     public function get_recent_donations_data() {
         $six_months_ago = date('Y-m-d', strtotime('-6 months'));
     
@@ -62,42 +67,7 @@ class BloodManagementModel extends CI_Model {
         return $result->count;
     }
     
-    
-    // public function get_recent_transfusions_data() {
-    //     $six_months_ago = date('Y-m-d', strtotime('-6 months'));
-    
-    //     $query = $this->db->query("
-    //         SELECT 
-    //             MONTH(transfusion_date) AS month,
-    //             COUNT(*) AS count
-    //         FROM 
-    //             transfusions
-    //         WHERE 
-    //             transfusion_date >= '$six_months_ago'
-    //         GROUP BY 
-    //             MONTH(transfusion_date)
-    //     ");
-    
-    //     return $query->result();
-    // }
-    
-    // public function get_recent_donations_data() {
-    //     $six_months_ago = date('Y-m-d', strtotime('-6 months'));
-    
-    //     $query = $this->db->query("
-    //         SELECT 
-    //             COUNT(*) AS count
-    //         FROM 
-    //             donation
-    //         WHERE 
-    //             donation_date >= '$six_months_ago'
-    //     ");
-    
-    //     $result = $query->row();
-    //     return $result->count;
-    // }
-    
-    
+     //Funcion para recoger la media de edades de los donantes
     public function get_donor_age_distribution() {
         $query = $this->db->query("
             SELECT 
@@ -121,6 +91,7 @@ class BloodManagementModel extends CI_Model {
     }
     
 
+     //Funcion para recoger datos totales de cada tipo de sangre
     public function get_aggregated_blood_inventory_data() {
         $this->db->select('type, SUM(quantity) as total_quantity');
         $this->db->group_by('type');
@@ -128,7 +99,7 @@ class BloodManagementModel extends CI_Model {
         return $query->result_array();
     }
      
-    
+     //Funcion para recoger el tipo de sangre m'as bajo
     public function get_lowest_blood_type() {
         $this->db->select('type, rh_factor, MIN(quantity) as min_quantity');
         $this->db->group_by('type, rh_factor');
