@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-    <script src="https://cdn.tiny.cloud/1/zlk8hd2bzk37noohkjk2ujy2gey2n67aqaq3l9pdxz5jkzv5/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/202hqd6tvqpaeq87lq3k206y1pc8wwqq1jrlsg0erxdb0awk/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 
     <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
