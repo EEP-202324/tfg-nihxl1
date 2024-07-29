@@ -45,7 +45,7 @@ class EmailController extends CI_Controller
         $mail->Port = 587;
         $mail->SMTPAuth = true;
 
-        $mail->Username = 'bancosangre-inf0@hotmail.com'; 
+        $mail->Username = 'xxxxxx@hotmail.com'; 
         $mail->Password = 'BancoSangreInf0!';
         
 
@@ -54,8 +54,8 @@ class EmailController extends CI_Controller
         $donors = $this->BloodManagementModel->get_donors_by_blood_type($blood_type);
 
 
-        $mail->setFrom('bancosangre-inf0@hotmail.com', 'Bloodbank ');
-        $mail->addAddress('nihalktitu@gmail.com');
+        $mail->setFrom('xxxxxxxx@hotmail.com', 'Bloodbank ');
+        $mail->addAddress('xxxxxxxxx@gmail.com');
         $mail->Subject = 'URGENTE! DONAR ES VIDA';
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
